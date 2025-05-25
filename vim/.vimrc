@@ -1,0 +1,175 @@
+" VUNDLE ------------------------------
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+  Plugin 'VundleVim/Vundle.vim'
+
+  Plugin 'preservim/nerdtree'
+
+  Plugin 'aitjcize/cppman'
+
+  Plugin 'ycm-core/YouCompleteMe'
+
+  Plugin 'bfrg/vim-c-cpp-modern'
+
+  " Plugin 'vuciv/golf'
+
+  Plugin 'mhinz/vim-signify'
+
+  Plugin 'terryma/vim-smooth-scroll'
+
+  Plugin 'rktjmp/lush.nvim'
+
+  Plugin 'rezch/vicom'
+
+  " --- themes ---
+  Plugin 'NLKNguyen/papercolor-theme'
+
+  Plugin 'fxn/vim-monochrome'
+
+  Plugin 'nordtheme/vim'
+
+  Plugin 'ayu-theme/ayu-vim'
+
+  Plugin 'zenbones-theme/zenbones.nvim'
+
+  Plugin 'catppuccin/nvim'
+
+call vundle#end()
+filetype plugin indent on
+" -------------------------------------
+
+" Compile & Run -----------------------
+autocmd filetype cpp inoremap <F5> <Esc> :w <bar> exec '!g++ -std=c++20 -DUwU '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r').' && rm '.shellescape('%:r')<CR>
+autocmd filetype cpp nnoremap <F5> <Esc> :w <bar> exec '!g++ -std=c++20 -DUwU '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r').' && rm '.shellescape('%:r')<CR>
+
+autocmd filetype kt inoremap <F5> <Esc> :w <bar> exec '!kotlinc'.shellescape('%:r').' -include-runtime -d '.shellescape('%:r')' && java -jar '.shellescape('%:r')<CR>
+autocmd filetype kt nnoremap <F5> <Esc> :w <bar> exec '!kotlinc'.shellescape('%:r').' -include-runtime -d '.shellescape('%:r')' && java -jar '.shellescape('%:r')<CR>
+
+autocmd filetype sh inoremap <F5> <Esc> :w <bar> exec '!bash '.shellescape('%')<CR>
+autocmd filetype sh nnoremap <F5> <Esc> :w <bar> exec '!bash '.shellescape('%')<CR>
+" -------------------------------------
+
+" OTHER -------------------------------
+set nu              " set line num
+set relativenumber
+set mouse=a         " activate mouse
+set shortmess-=S    " show count of finded words
+noremap  <silent> <C-S>         :update<CR>
+vnoremap <silent> <C-S>    <C-C>:update<CR>
+inoremap <silent> <C-S>    <C-O>:update<CR>
+set timeout timeoutlen=3000 ttimeoutlen=5
+autocmd FileType cpp set keywordprg=cppman " cpp doc
+
+command Jsonexp execute '%!python3 -m json.tool' | w
+
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
+
+let g:ViComExtentions = {
+            \ 'lhs': '--',
+            \ 'lua': '--'
+            \ }
+" -------------------------------------
+
+" SIGNIFY (GIT) -----------------------
+set updatetime=500     " git diff upd rate
+nnoremap <leader>s  :SignifyHunkDiff<CR>
+nnoremap <leader>su :SignifyHunkUndo<CR>
+" -------------------------------------
+
+" VICOM -------------------------------
+nnoremap <leader>c      :ViComLines<CR>
+vnoremap <leader>c <C-S>:ViComLines<CR>
+inoremap <leader>c <C-O>:ViComLines<CR>
+" -------------------------------------
+
+" SCROLL ------------------------------
+nnoremap <M-Up>           :call smooth_scroll#up  (2, 2, 1)<CR>
+nnoremap <M-Down>         :call smooth_scroll#down(3, 2, 1)<CR>
+inoremap <M-Up>      <C-O>:call smooth_scroll#up  (2, 2, 1)<CR>
+inoremap <M-Down>    <C-O>:call smooth_scroll#down(2, 2, 1)<CR>
+vnoremap <M-Up>           :call smooth_scroll#up  (2, 2, 1)<CR>
+vnoremap <M-Down>         :call smooth_scroll#down(2, 2, 1)<CR>
+" fast scroll
+nnoremap <M-S-Up>         :call smooth_scroll#up  (5, 5, 1)<CR>
+nnoremap <M-S-Down>       :call smooth_scroll#down(5, 5, 1)<CR>
+inoremap <M-S-Up>    <C-O>:call smooth_scroll#up  (5, 5, 1)<CR>
+inoremap <M-S-Down>  <C-O>:call smooth_scroll#down(5, 5, 1)<CR>
+vnoremap <M-S-Up>         :call smooth_scroll#up  (5, 5, 1)<CR>
+vnoremap <M-S-Down>       :call smooth_scroll#down(5, 5, 1)<CR>
+" -------------------------------------
+
+" NERDTree ----------------------------
+au VimEnter * NERDTree | wincmd p " open NERDTree
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
+nnoremap <leader>n  :NERDTreeFocus<CR>
+nnoremap <leader>f  <C-w>w
+nnoremap <C-n>      :NERDTree<CR>
+let NERDTreeShowHidden=1
+let g:NERDTreeWinSize=(winwidth(0) / 6)
+" -------------------------------------
+
+" TAB CONFIG --------------------------
+:set expandtab
+:set tabstop=4
+:set shiftwidth=4
+:set cursorline
+let &t_SI .= "\e[5 q"
+let &t_EI .= "\e[0 q"
+" -------------------------------------
+
+" COLORSCHEME CONFIG ------------------
+syntax on
+set background=dark
+set termguicolors       "enable true colors support
+let ayucolor="mirage"
+let g:nord_cursor_line_number_background = 1
+let g:nord_bold_vertical_split_line = 1
+let g:nord_bold = 1
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+let g:nord_underline = 1
+colorscheme catppuccin-frappe "tokyobones
+" for transparent back
+hi Normal guibg=NONE ctermbg=NONE
+" -------------------------------------
+
+" TRAILING WHITESPACES ----------------
+highlight ExtraWhitespace ctermbg=LightMagenta guibg=LightMagenta
+match ExtraWhitespace /\s\+$/
+au BufWinEnter * match ExtraWhitespace /\s\+$/
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match ExtraWhitespace /\s\+$/
+au BufWinLeave * call clearmatches()
+" -------------------------------------
+
+" YCM ----------------------------------
+let g:ycm_confirm_extra_conf=0
+let g:ycm_enable_inlay_hints=1
+let g:ycm_autoclose_preview_window_after_insertion=1
+let g:ycm_global_ycm_extra_conf = '/Users/r3zch/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+nmap <C-f> <Plug>(YCMFindSymbolInWorkspace)
+nmap <leader>gt :YcmCompleter GoTo<CR>
+nmap <leader>gd :YcmCompleter GoToDefinition<CR>
+nmap <leader>gc :YcmCompleter GoToCallers<CR>
+nmap <leader>gr :YcmCompleter GoToReferences<CR>
+nmap <leader>r  :exe 'YcmCompleter RefactorRename '.input('rename to: ')<CR>
+" -------------------------------------
+
+" TAB SWITCH --------------------------
+" CTRL-shift-tab is next tab
+nnoremap <C-S-Right>    :<C-U>tabnext<CR>
+inoremap <C-S-Right>    <C-\><C-N>:tabnext<CR>
+cnoremap <C-S-Right>    <C-C>:tabnext<CR>
+" CTRL-shift-tab is previous tab
+nnoremap <C-S-Left>     :<C-U>tabprevious<CR>
+inoremap <C-S-Left>     <C-\><C-N>:tabprevious<CR>
+cnoremap <C-S-Left>     <C-C>:tabprevious<CR>
+" -------------------------------------

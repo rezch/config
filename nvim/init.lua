@@ -11,6 +11,6 @@ vim.opt.relativenumber = true
 vim.cmd([[
 	set background=dark
 	set termguicolors
-	colorscheme seoulbones "catppuccin-frappe
+	colorscheme catppuccin
 	hi Normal guibg=NONE ctermbg=NONE
 ]])

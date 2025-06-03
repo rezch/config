@@ -16,12 +16,29 @@ vim.diagnostic.config({
     },
 })
 
+lspconfig.intelephense.setup({
+    cmd = { 'env', 'HOME=/tmp', 'intelephense', '--stdio' },
+    on_attach = function(client, bufnr)
+        -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+        -- vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    end,
+    root_dir = function ()
+        return vim.loop.cwd()
+    end,
+	filetypes = { "php", "html" },
+    flags = {
+        debounce_text_changes = 150,
+    }
+})
+
 lspconfig.clangd.setup({
 	cmd = {
 		'clangd',
 		'--background-index',
 		'--clang-tidy',
-		'--log=verbose'
+		'--log=verbose',
+        "--completion-style=detailed",
+        "--function-arg-placeholders",
 	},
     capabilities = {
         textDocument = {
@@ -31,6 +48,9 @@ lspconfig.clangd.setup({
         }
     },
 	init_options = {
+        usePlaceholders = true,
+        completeUnimported = true,
+        clangdFileStatus = true,
         InlayHints = {
             Designators = true,
             Enabled = true,
@@ -39,15 +59,4 @@ lspconfig.clangd.setup({
         },
 		fallbackFlags = { '-std=c++2b' },
 	},
-    settings = {
-        clangd = {
-            InlayHints = {
-                Designators = true,
-                Enabled = true,
-                ParameterNames = true,
-                DeducedTypes = true,
-            },
-            fallbackFlags = { "-std=c++20" },
-        },
-    }
 })

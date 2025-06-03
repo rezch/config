@@ -89,7 +89,12 @@ ins_left {
 ins_left {
   -- mode component
   function()
-    return ''
+      local icons = {
+          '󰕈', '', '', -- Ubuntu
+          '',           -- Mac
+          '󰣇'            -- Arch
+      }
+      return icons[5]
   end,
   color = function()
     -- auto change color according to neovims mode

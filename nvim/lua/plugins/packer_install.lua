@@ -58,20 +58,6 @@ return require('packer').startup(function()
 		end
 	})
 
- -- use({
- -- 	'nvim-neo-tree/neo-tree.nvim',
- -- 	branch = 'v3.x',
- -- 	requires = {
- -- 		'nvim-lua/plenary.nvim',
- -- 		'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
- -- 		'MunifTanjim/nui.nvim',
- -- 		-- '3rd/image.nvim', -- Optional image support in preview window: See `# Preview Mode` for more information
- -- 	},
- -- 	config = function()
- -- 		require('plugins/neo-tree')
- -- 	end
- -- })
-
 	use({
 		 'nvim-tree/nvim-tree.lua',
 		 config = function()
@@ -79,15 +65,19 @@ return require('packer').startup(function()
 		 end
 	 })
 
-	use({
-		'akinsho/bufferline.nvim',
-		tag = "*",
-		requires = 'nvim-tree/nvim-web-devicons',
-		config = function()
-			require('plugins/bufferline')
-		end
+     use({
+        'akinsho/bufferline.nvim',
+        tag = "*",
+        requires = 'nvim-tree/nvim-web-devicons',
+        config = function()
+            require('plugins/bufferline')
+        end
+     })
 
-	})
+    use {
+      'nvim-telescope/telescope.nvim', tag = '0.1.8',
+      requires = { {'nvim-lua/plenary.nvim'} }
+    }
 
 	use 'nvim-tree/nvim-web-devicons'
 

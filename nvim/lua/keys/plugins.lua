@@ -10,7 +10,7 @@ im('<leader>c', '<C-O>:ViComLines<CR>')
 -- [[ NvimTree ]] --
 nm('T', ':NvimTreeToggle<CR><C-w>w')
 nm('<leader>t', ':NvimTreeFocus<CR>')
-
+vim.keymap.set('n', '?', require('nvim-tree.api').tree.toggle_help)
 
 -- [[ Save ]] --
 nm('<C-S>', '<cmd>update<CR>')

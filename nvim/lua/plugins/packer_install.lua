@@ -49,6 +49,20 @@ return require('packer').startup(function()
 		end
 	})
 
+    -- Moving
+
+    use {
+      'nvim-telescope/telescope.nvim', tag = '0.1.8',
+      requires = { {'nvim-lua/plenary.nvim'} }
+    }
+
+    use {
+        'karb94/neoscroll.nvim',
+        config = function()
+            require('plugins/neoscroll')
+        end
+    }
+
     -- UI:
 	use({
 		'nvim-lualine/lualine.nvim',
@@ -73,11 +87,6 @@ return require('packer').startup(function()
             require('plugins/bufferline')
         end
      })
-
-    use {
-      'nvim-telescope/telescope.nvim', tag = '0.1.8',
-      requires = { {'nvim-lua/plenary.nvim'} }
-    }
 
 	use 'nvim-tree/nvim-web-devicons'
 

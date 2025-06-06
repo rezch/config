@@ -1,6 +1,6 @@
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-vim.opt.termguicolors = true
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
+-- vim.opt.termguicolors = true
 
 vim.api.nvim_create_autocmd("VimEnter", {
     pattern = "*",
@@ -23,12 +23,14 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end
 })
 
+vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
+
 require("nvim-tree").setup({
     sort = {
         sorter = "case_sensitive",
     },
     view = {
-        width = 22,
+        width = 32,
     },
     renderer = {
         group_empty = true,
@@ -37,16 +39,14 @@ require("nvim-tree").setup({
         },
         icons = {
             show = {
-                file = true,
-                folder = true,
                 folder_arrow = false,
                 git = true
-            }
-  }
+            },
+        }
     },
     filters = {
-        dotfiles = true,
-    },
+        dotfiles = true
+    }
 })
 
 vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "none" })

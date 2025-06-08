@@ -214,6 +214,8 @@ function onbg {
     exit
 }
 
+export EDITOR=nvim
+
 autoload -U select-word-style
 select-word-style bash
 

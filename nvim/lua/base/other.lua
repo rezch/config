@@ -28,11 +28,13 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     end
 })
 
-
 -- [[ Whitespaces ]] --
-vim.cmd [[ highlight ExtraWhitespace ctermbg=LightMagenta guibg=LightMagenta ]]
-vim.cmd [[ match ExtraWhitespace /\s\+$/ ]]
-vim.cmd [[ au BufWinEnter * match ExtraWhitespace /\s\+$/ ]]
-vim.cmd [[ au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/ ]]
-vim.cmd [[ au InsertLeave * match ExtraWhitespace /\s\+$/ ]]
-vim.cmd [[ au BufWinLeave * call clearmatches() ]]
+vim.cmd([[
+    highlight ExtraWhitespace ctermbg=LightMagenta guibg=LightMagenta
+    match ExtraWhitespace /\s\+$/
+    au BufWinEnter * match ExtraWhitespace /\s\+$/
+    au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+    au InsertLeave * match ExtraWhitespace /\s\+$/
+    au BufWinLeave * call clearmatches()
+    au TermOpen    * call clearmatches() " to disable hi in yazi mode
+]])

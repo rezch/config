@@ -25,21 +25,39 @@ lspconfig.intelephense.setup({
     root_dir = function ()
         return vim.loop.cwd()
     end,
-	filetypes = { "php", "html" },
+    filetypes = { "php", "html" },
     flags = {
         debounce_text_changes = 150,
     }
 })
 
+vim.lsp.enable('gopls')
+-- nvim_lsp.gopls.setup({})
+--     cmd = {'gopls'},
+--     -- for postfix snippets and analyzers
+--     capabilities = capabilities,
+--     settings = {
+--         gopls = {
+--             experimentalPostfixCompletions = true,
+--             analyses = {
+--                 unusedparams = true,
+--                 shadow = true,
+--             },
+--             staticcheck = true,
+--         },
+--     },
+--     -- on_attach = on_attach,
+-- })
+
 lspconfig.clangd.setup({
-	cmd = {
-		'clangd',
-		'--background-index',
-		'--clang-tidy',
-		'--log=verbose',
+    cmd = {
+        'clangd',
+        '--background-index',
+        '--clang-tidy',
+        '--log=verbose',
         "--completion-style=detailed",
         "--function-arg-placeholders",
-	},
+    },
     capabilities = {
         textDocument = {
             semanticHighlightingCapabilities = {
@@ -47,7 +65,7 @@ lspconfig.clangd.setup({
             },
         }
     },
-	init_options = {
+    init_options = {
         usePlaceholders = true,
         completeUnimported = true,
         clangdFileStatus = true,
@@ -57,6 +75,6 @@ lspconfig.clangd.setup({
             ParameterNames = true,
             DeducedTypes = true,
         },
-		fallbackFlags = { '-std=c++2b' },
-	},
+        fallbackFlags = { '-std=c++2b' },
+    },
 })

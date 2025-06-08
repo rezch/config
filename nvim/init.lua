@@ -10,10 +10,10 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 vim.cmd([[
-	set background=dark
-	set termguicolors
-	colorscheme zenburned " catppuccin
-	hi Normal guibg=NONE ctermbg=NONE
+    set background=dark
+    set termguicolors
+    colorscheme zenburned " catppuccin
+    hi Normal guibg=NONE ctermbg=NONE
 ]])
 
 vim.cmd([[

@@ -174,26 +174,26 @@ bindkey "^[[1;5D" backward-word
 fi
 
 function eza_function {
-  if [[ $1 == "" ]]; then
-    eza --tree --icons=always --level=1
-  else
-    if [[ $1 == "." ]]; then
-      eza --tree --icons=always
+    if [[ $1 == "" ]]; then
+        eza --tree --icons=always --level=1
     else
-      eza --tree --icons=always --level=$1
+        if [[ $1 == "." ]]; then
+            eza --tree --icons=always
+        else
+            eza --tree --icons=always --level=$1
+        fi
     fi
-  fi
 }
 
 alias es="eza_function"
 
 function l() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
 }
 
 function fzp {

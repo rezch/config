@@ -199,7 +199,11 @@ function l() {
 }
 
 function fzp {
-    $EDITOR $(fzf --preview='cat {}')
+    FILE=$(fzf --preview='cat {}')
+    if [[ -n $FILE ]]; then
+        echo $FILE;
+        $EDITOR $FILE
+    fi
 }
 
 alias ls='ls --color=always'

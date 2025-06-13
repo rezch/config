@@ -98,6 +98,13 @@ return require('packer').startup(function()
 
     use 'nvim-tree/nvim-web-devicons'
 
+    use({
+        'mhinz/vim-signify',
+        config = function()
+            vim.opt.updatetime = 500
+        end
+    })
+
     -- Themes:
     use({
         'zenbones-theme/zenbones.nvim',

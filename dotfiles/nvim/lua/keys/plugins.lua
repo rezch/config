@@ -34,3 +34,8 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help ta
 vim.keymap.set("n", "<leader>l", function()
     require("yazi").yazi()
 end)
+
+
+-- [[ Signify ]] --
+nm('<leader>d', ':SignifyHunkDiff<CR>')
+nm('<leader>du', ':SignifyHunkUndo<CR>')

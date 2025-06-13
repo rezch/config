@@ -78,7 +78,9 @@
     },
 
     "clock#date": {
-        "format": "  {:L%a %d %b}",
+        // "format": "  {:L%a %d %b}",
+        "format": "  {:L%d.%m.%Y}",
+        "locale": "ru_RU.utf8",
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
             "mode": "month",
@@ -87,7 +89,7 @@
             "format": {
                 "months": "<span color='#f5e0dc'><b>{}</b></span>",
                 "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
-                "today": "<span color='#f38ba8'><b>{}</b></span>",
+                "today": "<span color='#1e1e2e' background='#a70c72'><b>{}</b></span>",
             },
         },
         "actions": { "on-click-right": "mode" },

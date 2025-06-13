@@ -9,8 +9,6 @@
 window#waybar {
     transition-property: background-color;
     transition-duration: 0.5s;
-    /* background-color: #1e1e2e; */
-    /* background-color: #181825; */
     background-color: rgba(36, 24, 37, 0.8);
 }
 
@@ -123,7 +121,6 @@ window#waybar.empty #window {
 }
 
 #clock {
-/*    color: #74c7ec; */
     color: #d573b9;
 }
 

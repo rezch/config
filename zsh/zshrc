@@ -96,8 +96,8 @@ unset color_prompt force_color_prompt
 # esac
 
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+# if [ -x /usr/bin/dircolors ]; then
+    # test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
@@ -105,7 +105,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
-fi
+# fi
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
@@ -215,6 +215,36 @@ function onbg {
 }
 
 export EDITOR=nvim
+
+# fzf theme. folke/tokyonight.nvim
+# removed for transparent bg:
+#  --color=bg+:#2d3f76 \
+#  --color=bg:#1e2030 \
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+  --highlight-line \
+  --info=inline-right \
+  --ansi \
+  --layout=reverse \
+  --border=none \
+  --color=border:#589ed7 \
+  --color=fg:#c8d3f5 \
+  --color=gutter:#1e2030 \
+  --color=header:#ff966c \
+  --color=hl+:#65bcff \
+  --color=hl:#65bcff \
+  --color=info:#545c7e \
+  --color=marker:#ff007c \
+  --color=pointer:#ff007c \
+  --color=prompt:#65bcff \
+  --color=query:#c8d3f5:regular \
+  --color=scrollbar:#589ed7 \
+  --color=separator:#ff966c \
+  --color=spinner:#ff007c \
+"
+
+# shado theme ls colors
+export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.md=38;5;68:*.log=38;5;68:*.c=38;5;169:*.h=38;5;135:*.o=38;5;97:*.y=38;5;99:*.l=38;5;99:*.sh=38;5;104"
+export EXA_COLORS="*.md=38;5;68:*.log=38;5;68:*.c=38;5;169:*.h=38;5;135:*.o=38;5;97:*.y=38;5;99:*.l=38;5;99:*.sh=38;5;104"
 
 autoload -U select-word-style
 select-word-style bash

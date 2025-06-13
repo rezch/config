@@ -1,1 +1,1 @@
-require('plugins/lualine_themes/evil_lualine')
+-- require('plugins/lualine_themes/lualine_bubbles')

@@ -23,7 +23,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end
 })
 
-vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
+vim.cmd([[
+    hi NvimTreeIndentMarker guibg=NONE ctermbg=NONE
+]])
 
 require("nvim-tree").setup({
     sort = {

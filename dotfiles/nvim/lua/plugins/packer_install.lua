@@ -53,7 +53,7 @@ return require('packer').startup(function()
 
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.8',
-        requires = { {'nvim-lua/plenary.nvim'} },
+        requires = { 'nvim-lua/plenary.nvim' },
         config = function()
             require('plugins/telescope')
         end
@@ -68,7 +68,7 @@ return require('packer').startup(function()
 
     use {
         'mikavilpas/yazi.nvim',
-        requires = { {'folke/snacks.nvim'} },
+        requires = { 'folke/snacks.nvim' },
     }
 
     -- UI:
@@ -101,13 +101,24 @@ return require('packer').startup(function()
     -- Themes:
     use({
         'zenbones-theme/zenbones.nvim',
-        requires = {
-            'rktjmp/lush.nvim'
-        }
+        requires = { 'rktjmp/lush.nvim' }
     })
 
     use { 'nyoom-engineering/oxocarbon.nvim' }
 
     use { 'catppuccin/nvim', as = 'catppuccin' }
 
+    use({
+        'folke/tokyonight.nvim',
+        config = function()
+            require('plugins/themes/tokyonight')
+        end
+    })
+
+    use { 'Shadorain/shadotheme' }
+
+    use({
+        'shoenot/witchesbrew.nvim',
+        requires = { 'rktjmp/lush.nvim' }
+    })
 end)

@@ -1,5 +1,9 @@
 local lspconfig = require('lspconfig')
 
+
+vim.lsp.enable('gopls')
+vim.lsp.enable('bashls')
+
 vim.diagnostic.config({
     virtual_text = true,
     signs = true,
@@ -31,24 +35,6 @@ lspconfig.intelephense.setup({
     }
 })
 
-vim.lsp.enable('gopls')
--- nvim_lsp.gopls.setup({})
---     cmd = {'gopls'},
---     -- for postfix snippets and analyzers
---     capabilities = capabilities,
---     settings = {
---         gopls = {
---             experimentalPostfixCompletions = true,
---             analyses = {
---                 unusedparams = true,
---                 shadow = true,
---             },
---             staticcheck = true,
---         },
---     },
---     -- on_attach = on_attach,
--- })
-
 lspconfig.clangd.setup({
     cmd = {
         'clangd',
@@ -56,7 +42,7 @@ lspconfig.clangd.setup({
         '--clang-tidy',
         '--log=verbose',
         "--completion-style=detailed",
-        "--function-arg-placeholders",
+        "--function-arg-placeholders=true",
     },
     capabilities = {
         textDocument = {

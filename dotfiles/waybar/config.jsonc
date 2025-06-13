@@ -7,12 +7,15 @@
     "passthrough": false,
     "fixed-center": true,
 
-    "modules-left": ["hyprland/workspaces", "custom/sep", "hyprland/window"],
+    "modules-left": [
+        "hyprland/workspaces",
+        "custom/sep",
+        "hyprland/window"],
     "modules-center": ["custom/music-player"],
     "modules-right": [
         "custom/keyboard-layout",
         // "custom/screen-recorder",
-        "custom/sep",
+        // "custom/sep",
         "pulseaudio",
         "pulseaudio#microphone",
         "clock",

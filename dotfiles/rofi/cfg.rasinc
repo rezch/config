@@ -1,0 +1,10 @@
+configuration {
+    modes: "window,run,ssh,drun";
+    font: "mono 15";
+    icon-theme: "Papirus";
+    show-icons: true;
+    sort: true;
+    sorting-method: "fzf";
+    disable-history: false;
+    drun-reload-desktop-cache: true;
+}

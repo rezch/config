@@ -173,6 +173,8 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 fi
 
+export EDITOR=nvim
+
 function eza_function {
     if [[ $1 == "" ]]; then
         eza --tree --icons=always --level=1
@@ -197,7 +199,7 @@ function l() {
 }
 
 function fzp {
-    fzf --preview='cat {}'
+    $EDITOR $(fzf --preview='cat {}')
 }
 
 alias ls='ls --color=always'
@@ -214,8 +216,6 @@ function onbg {
     exit
 }
 
-export EDITOR=nvim
-
 # fzf theme. folke/tokyonight.nvim
 # removed for transparent bg:
 #  --color=bg+:#2d3f76 \
@@ -224,7 +224,6 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
   --highlight-line \
   --info=inline-right \
   --ansi \
-  --layout=reverse \
   --border=none \
   --color=border:#589ed7 \
   --color=fg:#c8d3f5 \

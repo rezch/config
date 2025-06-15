@@ -12,6 +12,7 @@ nm('T', ':NvimTreeToggle<CR><C-w>w')
 nm('<leader>t', ':NvimTreeFocus<CR>')
 vim.keymap.set('n', '?', require('nvim-tree.api').tree.toggle_help)
 
+
 -- [[ Save ]] --
 nm('<C-S>', '<cmd>update<CR>')
 vm('<C-S>', '<C-C>:update<CR>')
@@ -20,6 +21,9 @@ im('<C-S>', '<C-O>:update<CR>')
 
 -- [[ LSP ]] --
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action)
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 
 
 -- [[ Telescope ]] --

@@ -1,5 +1,5 @@
 vim.cmd([[
-	let g:ViComExtentions = {
+    let g:ViComExtentions = {
             \ 'lhs'  : '--',
             \ 'lua'  : '--',
             \ 'conf' : '#'

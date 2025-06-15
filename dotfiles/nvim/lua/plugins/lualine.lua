@@ -1,1 +1,0 @@
--- require('plugins/lualine_themes/lualine_bubbles')

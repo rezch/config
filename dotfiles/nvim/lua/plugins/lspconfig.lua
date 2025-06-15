@@ -62,5 +62,6 @@ lspconfig.clangd.setup({
             DeducedTypes = true,
         },
         fallbackFlags = { '-std=c++2b' },
+        extra_args = { "--style=file" },
     },
 })

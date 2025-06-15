@@ -22,5 +22,7 @@ vim.cmd([[
 
 vim.cmd([[
     set list
-    set lcs+=space:·
+    set lcs+=lead:·
+    set lcs+=multispace:·
+    set lcs+=trail:·
 ]])

@@ -237,6 +237,12 @@ function killall {
     kill -9 $( fdpc $@ | awk '{print $2}' )
 }
 
+if [[ -n $XDG_CURRENT_DESKTOP ]]; then
+    function discord {
+        onbg discord --ozone-platform=wayland
+    }
+fi
+
 # fzf theme. folke/tokyonight.nvim
 # removed for transparent bg:
 #  --color=bg+:#2d3f76 \

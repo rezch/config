@@ -175,19 +175,13 @@ fi
 
 export EDITOR=nvim
 
-function eza_function {
+function es {
     if [[ $1 == "" ]]; then
         eza --tree --icons=always --level=1
-    else
-        if [[ $1 == "." ]]; then
-            eza --tree --icons=always
-        else
-            eza --tree --icons=always --level=$1
-        fi
+        return
     fi
+    eza --tree --icons=always $( [[ $1 == "." ]] || echo "--level=$1" )
 }
-
-alias es="eza_function"
 
 function l() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -199,10 +193,25 @@ function l() {
 }
 
 function fzp {
-    FILE=$(fzf --preview='cat {}')
+    FIND_COMMAND="rg \
+                --files \
+                --hidden \
+                --glob='!**/.git/*' \
+                --glob='!**/.idea/*' \
+                --glob='!**/.vscode/*' \
+                --glob='!**/build/*' \
+                --glob='!**/dist/*' \
+                --glob='!**/yarn.lock' \
+                --glob='!**/package-lock.json' \
+                --glob='!**/.cache/*' \
+                --glob='!**/.mozilla/*' \
+                --glob='!**/.zsh/*'"
+
+    FILE=$( eval "$FIND_COMMAND $@" | fzf --preview='cat {}' )
     if [[ -n $FILE ]]; then
         echo $FILE;
         $EDITOR $FILE
+        wl-copy $FILE
     fi
 }
 
@@ -218,6 +227,14 @@ function onbg {
     nohup "$@" </dev/null >/dev/null 2>&1 &
     disown
     exit
+}
+
+function fdpc {
+    ps aux | grep $@
+}
+
+function killall {
+    kill -9 $( fdpc $@ | awk '{print $2}' )
 }
 
 # fzf theme. folke/tokyonight.nvim

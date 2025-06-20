@@ -28,9 +28,6 @@ esac
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
-# append to the history file, don't overwrite it
-### shopt -s histappend
-
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTFILE=~/.zhistory
 HISTSIZE=1000
@@ -139,20 +136,18 @@ fi
 ###   fi
 ### fi
 
-export PATH=$PATH:/home/rezch/.local/bin/
-
 if [[ "$TERM" != emacs ]]; then
 [[ -z "$terminfo[kdch1]" ]] || bindkey -M emacs "$terminfo[kdch1]" delete-char
 [[ -z "$terminfo[khome]" ]] || bindkey -M emacs "$terminfo[khome]" beginning-of-line
-[[ -z "$terminfo[kend]" ]] || bindkey -M emacs "$terminfo[kend]" end-of-line
+[[ -z "$terminfo[kend]" ]]  || bindkey -M emacs "$terminfo[kend]" end-of-line
 [[ -z "$terminfo[kich1]" ]] || bindkey -M emacs "$terminfo[kich1]" overwrite-mode
 [[ -z "$terminfo[kdch1]" ]] || bindkey -M vicmd "$terminfo[kdch1]" vi-delete-char
 [[ -z "$terminfo[khome]" ]] || bindkey -M vicmd "$terminfo[khome]" vi-beginning-of-line
-[[ -z "$terminfo[kend]" ]] || bindkey -M vicmd "$terminfo[kend]" vi-end-of-line
+[[ -z "$terminfo[kend]" ]]  || bindkey -M vicmd "$terminfo[kend]" vi-end-of-line
 [[ -z "$terminfo[kich1]" ]] || bindkey -M vicmd "$terminfo[kich1]" overwrite-mode
 
-[[ -z "$terminfo[cuu1]" ]] || bindkey -M viins "$terminfo[cuu1]" vi-up-line-or-history
-[[ -z "$terminfo[cuf1]" ]] || bindkey -M viins "$terminfo[cuf1]" vi-forward-char
+[[ -z "$terminfo[cuu1]" ]]  || bindkey -M viins "$terminfo[cuu1]" vi-up-line-or-history
+[[ -z "$terminfo[cuf1]" ]]  || bindkey -M viins "$terminfo[cuf1]" vi-forward-char
 [[ -z "$terminfo[kcuu1]" ]] || bindkey -M viins "$terminfo[kcuu1]" vi-up-line-or-history
 [[ -z "$terminfo[kcud1]" ]] || bindkey -M viins "$terminfo[kcud1]" vi-down-line-or-history
 [[ -z "$terminfo[kcuf1]" ]] || bindkey -M viins "$terminfo[kcuf1]" vi-forward-char
@@ -164,9 +159,9 @@ if [[ "$TERM" != emacs ]]; then
 [[ "$terminfo[kcuf1]" == "^[O"* ]] && bindkey -M viins "${terminfo[kcuf1]/O/[}" vi-forward-char
 [[ "$terminfo[kcub1]" == "^[O"* ]] && bindkey -M viins "${terminfo[kcub1]/O/[}" vi-backward-char
 [[ "$terminfo[khome]" == "^[O"* ]] && bindkey -M viins "${terminfo[khome]/O/[}" beginning-of-line
-[[ "$terminfo[kend]" == "^[O"* ]] && bindkey -M viins "${terminfo[kend]/O/[}" end-of-line
+[[ "$terminfo[kend]" == "^[O"* ]]  && bindkey -M viins "${terminfo[kend]/O/[}" end-of-line
 [[ "$terminfo[khome]" == "^[O"* ]] && bindkey -M emacs "${terminfo[khome]/O/[}" beginning-of-line
-[[ "$terminfo[kend]" == "^[O"* ]] && bindkey -M emacs "${terminfo[kend]/O/[}" end-of-line
+[[ "$terminfo[kend]" == "^[O"* ]]  && bindkey -M emacs "${terminfo[kend]/O/[}" end-of-line
 
 # ctrl+arrows
 bindkey "^[[1;5C" forward-word
@@ -194,18 +189,19 @@ function l() {
 
 function fzp {
     FIND_COMMAND="rg \
-                --files \
-                --hidden \
-                --glob='!**/.git/*' \
-                --glob='!**/.idea/*' \
-                --glob='!**/.vscode/*' \
-                --glob='!**/build/*' \
-                --glob='!**/dist/*' \
-                --glob='!**/yarn.lock' \
-                --glob='!**/package-lock.json' \
-                --glob='!**/.cache/*' \
-                --glob='!**/.mozilla/*' \
-                --glob='!**/.zsh/*'"
+        --files \
+        --hidden \
+        --glob='!**/.git/*' \
+        --glob='!**/.idea/*' \
+        --glob='!**/.vscode/*' \
+        --glob='!**/build/*' \
+        --glob='!**/dist/*' \
+        --glob='!**/yarn.lock' \
+        --glob='!**/package-lock.json' \
+        --glob='!**/.cache/*' \
+        --glob='!**/.mozilla/*' \
+        --glob='!/proc/*' \
+        --glob='!**/.zsh/*'"
 
     FILE=$( eval "$FIND_COMMAND $@" | fzf --preview='cat {}' )
     if [[ -n $FILE ]]; then
@@ -214,14 +210,6 @@ function fzp {
         wl-copy $FILE
     fi
 }
-
-alias ls='ls --color=always'
-
-# alias win="cd /mnt/c/Users/<USERNAME>" # path to windows
-
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# neofetch
 
 function onbg {
     nohup "$@" </dev/null >/dev/null 2>&1 &
@@ -242,6 +230,10 @@ if [[ -n $XDG_CURRENT_DESKTOP ]]; then
         onbg discord --ozone-platform=wayland
     }
 fi
+
+function zsudo {
+    sudo zsh -c "$functions[$1]" "$@"
+}
 
 # fzf theme. folke/tokyonight.nvim
 # removed for transparent bg:
@@ -271,6 +263,10 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 # shado theme ls colors
 export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.md=38;5;68:*.log=38;5;68:*.c=38;5;169:*.h=38;5;135:*.o=38;5;97:*.y=38;5;99:*.l=38;5;99:*.sh=38;5;104"
 export EXA_COLORS="*.md=38;5;68:*.log=38;5;68:*.c=38;5;169:*.h=38;5;135:*.o=38;5;97:*.y=38;5;99:*.l=38;5;99:*.sh=38;5;104"
+
+export PATH=$PATH:/home/rezch/.local/bin/
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 autoload -U select-word-style
 select-word-style bash

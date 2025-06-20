@@ -1,0 +1,35 @@
+#!/bin/python3
+import click
+from fileinput import FileInput
+from pathlib import Path
+
+
+HOME = Path().home()
+RUNCACHE_FILE  = HOME / ".cache/rofi-4.runcache"
+DRUNCACHE_FILE = HOME / ".cache/rofi3.druncache"
+
+
+def reset_cache(line):
+    cache = line.split(' ')
+    if len(cache) < 2:
+        return ''
+    return '0 ' + ' '.join(cache[1:])
+
+
+@click.command()
+@click.option('--max-size', 'max_size', default=5, type=int, help='Max size of cache to store. Set to -1 to disable.\ndefault: 5')
+@click.argument('cache', type=click.Choice(['run', 'drun']))
+def main(cache, max_size):
+    filename = RUNCACHE_FILE
+    if cache == "drun":
+        filename = RUNCACHE_FILE
+
+    with FileInput(filename, inplace=True, backup='.bak') as f:
+        for i, line in enumerate(f):
+            if max_size != -1 and i >= max_size:
+                break
+            print(reset_cache(line))
+
+
+if __name__ == '__main__':
+    main()

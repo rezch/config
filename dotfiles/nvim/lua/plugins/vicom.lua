@@ -1,7 +1,9 @@
 vim.cmd([[
     let g:ViComExtentions = {
-            \ 'lhs'  : '--',
-            \ 'lua'  : '--',
-            \ 'conf' : '#'
+            \ 'lhs'   : '--',
+            \ 'lua'   : '--',
+            \ 'conf'  : '#',
+            \ 'cmake' : '#',
+            \ 'txt' : '#',
             \ }
 ]])

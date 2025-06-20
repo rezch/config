@@ -13,4 +13,8 @@ function set_theme(theme)
         hi NormalNC guibg=NONE ctermbg=NONE
         hi SignColumn guibg=NONE ctermbg=NONE
     ]])
+
+    if theme == 'witchesbrew' then
+        vim.cmd(" hi Comment guifg=#95a682 ")
+    end
 end

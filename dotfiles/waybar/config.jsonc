@@ -80,7 +80,7 @@
     "clock#date": {
         // "format": "  {:L%a %d %b}",
         "format": "  {:L%d.%m.%Y}",
-        "locale": "ru_RU.utf8",
+        "locale": "en_IE.UTF-8",
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
             "mode": "month",

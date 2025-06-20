@@ -3,6 +3,7 @@ local lspconfig = require('lspconfig')
 
 vim.lsp.enable('gopls')
 vim.lsp.enable('bashls')
+vim.lsp.enable('pyright')
 
 vim.diagnostic.config({
     virtual_text = true,
@@ -35,6 +36,13 @@ lspconfig.intelephense.setup({
     }
 })
 
+function get_cpp_flags()
+    if (filetype == "cpp") then
+        return { '-std=c++2b' }
+    end
+    return { }
+end
+
 lspconfig.clangd.setup({
     cmd = {
         'clangd',
@@ -61,7 +69,7 @@ lspconfig.clangd.setup({
             ParameterNames = true,
             DeducedTypes = true,
         },
-        fallbackFlags = { '-std=c++2b' },
+        fallbackFlags = get_cpp_flags(),
         extra_args = { "--style=file" },
     },
 })

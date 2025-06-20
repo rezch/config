@@ -3,6 +3,7 @@
 LGREEN="\033[1;32m"
 GREEN="\033[0;32m"
 RED="\033[0;31m"
+LPURPLE="\033[1;35m"
 NC="\033[0m"
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
@@ -71,10 +72,10 @@ do
     fi
 done
 
-if [[ $((${FOLDERS_DIFF} + ${FILES_DIFF})) ]]; then
+if [[ $((${FOLDERS_DIFF} + ${FILES_DIFF})) > 0 ]]; then
     echo -e "${GREEN}Fetching done${NC}"
     echo "Updated $FOLDERS_DIFF folders in dotfiles"
     echo "Updated $FILES_DIFF files in home"
 else
-    echo "Nothing new to fetch..."
+    echo -e "${LPURPLE}Nothing new to fetch...${NC}"
 fi

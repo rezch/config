@@ -203,7 +203,7 @@ function fzp {
         --glob='!/proc/*' \
         --glob='!**/.zsh/*'"
 
-    FILE=$( eval "$FIND_COMMAND $@" | fzf --preview='cat {}' )
+    FILE=$( eval "$FIND_COMMAND $@ 2>/dev/null" | fzf --preview='cat {}' )
     if [[ -n $FILE ]]; then
         echo $FILE;
         $EDITOR $FILE

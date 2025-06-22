@@ -14,23 +14,35 @@ CompactNamespaces: false
 EmptyLineAfterAccessModifier: Leave
 MaxEmptyLinesToKeep: 2
 
-# Indents
-AccessModifierOffset: -4
+# Spaces
+SpaceBeforeParens: Custom
+SpaceBeforeParensOptions:
+  AfterOverloadedOperator: true
 Cpp11BracedListStyle: false
+# SpaceAfterOperatorKeyword: true # clang-format 21
+
+# Indents
+# ContinuationIndentWidth: 4
+AccessModifierOffset: -4
 AlignConsecutiveAssignments:
   Enabled: true
   AcrossEmptyLines: false
   AcrossComments: true
   AlignCompound: true
 AlignAfterOpenBracket: AlwaysBreak
-BinPackParameters: AlwaysOnePerLine
+BinPackParameters: OnePerLine
 BinPackArguments: false
 AlignTrailingComments:
   Kind: Always
   OverEmptyLines: 0
 AllowShortCaseExpressionOnASingleLine: true
 BreakBeforeBinaryOperators: NonAssignment
+BreakTemplateDeclarations: Leave
 AlignArrayOfStructures: Right
+IndentExternBlock: NoIndent
+IndentPPDirectives: BeforeHash
+PPIndentWidth: 1
+ReflowComments: IndentOnly
 ColumnLimit: 0
 
 # Braces

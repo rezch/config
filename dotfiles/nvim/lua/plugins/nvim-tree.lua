@@ -23,10 +23,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end
 })
 
-vim.cmd([[
-    hi NvimTreeIndentMarker guibg=NONE ctermbg=NONE
-]])
-
 require("nvim-tree").setup({
     sort = {
         sorter = "case_sensitive",
@@ -50,5 +46,3 @@ require("nvim-tree").setup({
         dotfiles = true
     }
 })
-
-vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "none" })

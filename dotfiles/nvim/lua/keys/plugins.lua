@@ -19,6 +19,12 @@ vm('<C-S>', '<C-C>:update<CR>')
 im('<C-S>', '<C-O>:update<CR>')
 
 
+-- [[ Themes ]] --
+local themes_setup = require('plugins/themes/theme_setup')
+vim.keymap.set("n", "<leader>tn", NextTheme)
+vim.keymap.set("n", "<leader>tp", PrevTheme)
+
+
 -- [[ LSP ]] --
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)

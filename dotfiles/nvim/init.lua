@@ -1,5 +1,4 @@
 require('plugins/packer_install')
-require('plugins/themes/theme_setup')
 
 require('base/search')
 require('base/tabs')
@@ -7,7 +6,8 @@ require('base/other')
 
 require('keys/main')
 
-set_theme('witchesbrew')
+local theme_config = require('plugins/themes/theme_setup')
+theme_config(3)
 
 vim.opt.number = true
 vim.opt.relativenumber = true

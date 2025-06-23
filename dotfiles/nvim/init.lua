@@ -6,8 +6,14 @@ require('base/other')
 
 require('keys/main')
 
-local theme_config = require('plugins/themes/theme_setup')
-theme_config(3)
+require('plugins/themes/theme_setup').setup({
+    themes = {
+        'witchesbrew',
+        'tokyonight-moon',
+        'zenburned',
+    },
+    current_theme = 2
+})
 
 vim.opt.number = true
 vim.opt.relativenumber = true

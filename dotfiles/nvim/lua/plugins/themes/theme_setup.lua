@@ -104,4 +104,10 @@ function PrevTheme()
     reload_theme()
 end
 
+function SetTheme(theme)
+    utils.Append(config.themes, theme)
+    config.current_theme = utils.Len(config.themes)
+    reload_theme()
+end
+
 return M

@@ -36,4 +36,8 @@ function M.Len(list)
     return count
 end
 
+function M.Append(list, value)
+    list[M.Len(list) + 1] = value
+end
+
 return M

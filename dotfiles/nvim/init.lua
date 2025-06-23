@@ -1,9 +1,6 @@
 require('plugins/packer_install')
 
-require('base/search')
-require('base/tabs')
 require('base/other')
-
 require('keys/main')
 
 require('plugins/themes/theme_setup').setup({
@@ -11,12 +8,11 @@ require('plugins/themes/theme_setup').setup({
         'witchesbrew',
         'tokyonight-moon',
         'zenburned',
+        'nordbones',
+        'unokai'
     },
     current_theme = 2
 })
-
-vim.opt.number = true
-vim.opt.relativenumber = true
 
 vim.cmd([[
     autocmd filetype cpp inoremap <F5> <Esc> :w <bar> exec '!g++ -std=c++2b -DUwU '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r').' && rm '.shellescape('%:r')<CR>
@@ -27,11 +23,4 @@ vim.cmd([[
 
     autocmd filetype php inoremap <F5> <Esc> :w <bar> exec '!php '.shellescape('%')<CR>
     autocmd filetype php nnoremap <F5> <Esc> :w <bar> exec '!php '.shellescape('%')<CR>
-]])
-
-vim.cmd([[
-    set list
-    set lcs+=lead:·
-    set lcs+=multispace:·
-    set lcs+=trail:·
 ]])

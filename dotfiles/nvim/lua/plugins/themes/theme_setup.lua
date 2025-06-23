@@ -11,7 +11,14 @@ local default_config = {
 
 local config = { }
 
-local function find_config(theme)
+local function get_theme()
+    if config.current_theme == 0 then
+        return
+    end
+    return config.themes[config.current_theme]
+end
+
+local function find_config_impl(theme)
     theme = utils.GetPrefix(theme)
     local f = io.popen("dir ~/.config/nvim/lua/plugins/themes")
     if not f then
@@ -24,7 +31,17 @@ local function find_config(theme)
     end
 end
 
+local function find_config(theme)
+    local theme_config = find_config_impl(theme)
+    return theme_config ~= nil
+            and theme_config
+            or function() end
+end
+
 local function set_transparency()
+    if not config.transparent then
+        return
+    end
     local none_bg = { bg="none", ctermbg="none" }
     vim.api.nvim_set_hl(0, "Normal", none_bg)
     vim.api.nvim_set_hl(0, "NormalNC", none_bg)
@@ -33,17 +50,27 @@ local function set_transparency()
     vim.api.nvim_set_hl(0, "NvimTreeNormal", none_bg)
 end
 
+local function hi_extra_whitespace()
+    vim.api.nvim_command("hi def link ExtraWhitespace SpellBad")
+    vim.cmd([[
+        highlight ExtraWhitespace cterm=undercurl gui=undercurl guisp=#c53b53
+        match ExtraWhitespace /\s\+$/
+        au BufWinEnter * match ExtraWhitespace /\s\+$/
+        au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+        au InsertLeave * match ExtraWhitespace /\s\+$/
+        au BufWinLeave * call clearmatches()
+        au TermOpen    * call clearmatches() " to disable hi in yazi
+    ]])
+end
+
 local function reload_theme()
-    if config.current_theme == 0 then
+    local theme = get_theme()
+    if theme == nil then
         return
     end
 
-    local theme = config.themes[config.current_theme]
     local theme_config = find_config(theme)
-
-    if theme_config then
-        theme_config()
-    end
+    theme_config()
 
     require('lualine').setup {
         options = {
@@ -53,22 +80,13 @@ local function reload_theme()
 
     vim.o.background = config.mode
     vim.o.termguicolors = true
-    vim.cmd("colorscheme " .. theme)
+    vim.cmd.colorscheme(theme)
 
-    if config.transparent then
-        set_transparency()
-    end
-    local none_bg = { bg="none", ctermbg="none" }
-    vim.api.nvim_set_hl(0, "Normal", none_bg)
-    vim.api.nvim_set_hl(0, "NormalNC", none_bg)
-    vim.api.nvim_set_hl(0, "SignColumn", none_bg)
-    vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", none_bg)
-    vim.api.nvim_set_hl(0, "NvimTreeNormal", none_bg)
+    set_transparency()
+    hi_extra_whitespace()
+    theme_config()
 
-
-    if theme_config then
-        theme_config()
-    end
+    print('Current theme: ' .. theme)
 end
 
 function M.setup(user_config)
@@ -77,14 +95,12 @@ function M.setup(user_config)
 end
 
 function NextTheme()
-    config.current_theme = config.current_theme + 1
-    config.current_theme = (config.current_theme - 1) % utils.Len(config['themes']) + 1
+    config.current_theme = (config.current_theme) % utils.Len(config.themes) + 1
     reload_theme()
 end
 
 function PrevTheme()
-    config.current_theme = config.current_theme - 1
-    config.current_theme = (config.current_theme - 1) % utils.Len(config['themes']) + 1
+    config.current_theme = (config.current_theme - 2) % utils.Len(config.themes) + 1
     reload_theme()
 end
 

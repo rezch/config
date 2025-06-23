@@ -17,7 +17,7 @@ MaxEmptyLinesToKeep: 2
 # Spaces
 SpaceBeforeParens: Custom
 SpaceBeforeParensOptions:
-  AfterOverloadedOperator: true
+# AfterOverloadedOperator: true
 Cpp11BracedListStyle: false
 # SpaceAfterOperatorKeyword: true # clang-format 21
 

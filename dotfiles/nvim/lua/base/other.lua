@@ -1,22 +1,15 @@
---[[ Настройка панелей ]]--
--- Вертикальные сплиты становятся справа
--- По умолчанию панели в Neovim ставятся в зависимости от расположения текущей панели. Данная настройка поможет нам держать панели в порядке
-vim.opt.splitright = true
+-- [[ nu ]] --
+vim.opt.number = true
+vim.opt.relativenumber = true
 
--- Горизонтальные сплиты становятся сверху
+-- [[ Win splitting ]] --
+vim.opt.splitright = true
 vim.opt.splitbelow = false
 
---[[ Дополнительные настройки ]]--
--- Используем системный буфер обмена
+-- [[ Clipboard ]] --
 vim.opt.clipboard = 'unnamedplus'
 
--- Отключаем дополнение файлов в конце
-vim.opt.fixeol = false
-
--- Автодополнение (встроенное в Neovim)
-vim.opt.completeopt = 'menuone,noselect'
-
--- Не автокомментировать новые линии при переходе на новую строку
+-- [[ Disable autocomment new lines ]] --
 vim.cmd [[autocmd BufEnter * set fo-=c fo-=r fo-=o]]
 
 vim.api.nvim_create_autocmd("BufReadPost", {
@@ -30,11 +23,34 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 -- [[ Whitespaces ]] --
 vim.cmd([[
-    highlight ExtraWhitespace ctermbg=LightMagenta guibg=LightMagenta
-    match ExtraWhitespace /\s\+$/
-    au BufWinEnter * match ExtraWhitespace /\s\+$/
-    au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-    au InsertLeave * match ExtraWhitespace /\s\+$/
-    au BufWinLeave * call clearmatches()
-    au TermOpen    * call clearmatches() " to disable hi in yazi mode
+    set list
+    set lcs+=lead:·
+    set lcs+=multispace:·
+    set lcs+=trail:·
 ]])
+
+
+-- [[ Tabs ]] --
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.smartindent = true
+vim.opt.cursorline = true
+
+-- [[ Search ]] --
+-- Ignore case in search
+vim.opt.ignorecase = true
+
+-- Dont ignore case, if there are upper-case symbols
+vim.opt.smartcase = true
+
+-- Highlight
+vim.opt.showmatch = true
+
+-- [[ Other ]] --
+-- disable autocomplete files
+vim.opt.fixeol = false
+
+-- disable nvim autocomplete
+vim.opt.completeopt = 'menuone,noselect'
+

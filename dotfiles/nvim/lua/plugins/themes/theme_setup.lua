@@ -38,6 +38,11 @@ local function find_config(theme)
             or function() end
 end
 
+local function has_colors_folder(theme)
+    theme = utils.GetPrefix(theme)
+    return utils.isdir("~/.config/nvim/lua/plugins/themes")
+end
+
 local function set_transparency()
     if not config.transparent then
         return
@@ -72,11 +77,13 @@ local function reload_theme()
     local theme_config = find_config(theme)
     theme_config()
 
-    require('lualine').setup {
-        options = {
-            theme = theme
+    if has_colors_folder(theme) then
+        require('lualine').setup {
+            options = {
+                theme = theme
+            }
         }
-    }
+    end
 
     vim.o.background = config.mode
     vim.o.termguicolors = true

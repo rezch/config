@@ -8,10 +8,11 @@ require('plugins/themes/theme_setup').setup({
         'witchesbrew',
         'tokyonight-moon',
         'zenburned',
+        'retrobox',
         'nordbones',
-        'unokai'
+        'unokai',
     },
-    current_theme = 2
+    current_theme = 4,
 })
 
 vim.cmd([[

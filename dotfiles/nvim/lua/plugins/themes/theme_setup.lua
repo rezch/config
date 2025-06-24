@@ -12,18 +12,21 @@ local default_config = {
 local config = { }
 
 local function get_theme()
-    if config.current_theme == 0 then
-        return
-    end
-    return config.themes[config.current_theme]
+    return config.current_theme == 0
+        and nil
+        or config.themes[config.current_theme]
 end
 
+-- [[ Check config files existence ]] --
+
 local function find_config_impl(theme)
-    theme = utils.GetPrefix(theme)
-    local f = io.popen("dir ~/.config/nvim/lua/plugins/themes")
+    local path = "~/.config/nvim/lua/plugins/themes";
+    local f = io.popen("dir " .. path)
     if not f then
         return
     end
+
+    theme = utils.GetPrefix(theme)
     for _, theme_config in ipairs(utils.Map(utils.Split(f:read("*a")), utils.GetPrefix)) do
         if theme_config == theme then
             return require('plugins/themes/' .. theme_config)
@@ -38,16 +41,32 @@ local function find_config(theme)
             or function() end
 end
 
-local function has_colors_folder(theme)
+local function has_packer_folder(theme)
+    local path = "~/.local/share/nvim/site/pack/packer/start";
+    local f = io.popen("dir " .. path)
+    if not f then
+        return false
+    end
+
     theme = utils.GetPrefix(theme)
-    return utils.isdir("~/.config/nvim/lua/plugins/themes")
+    for _, theme_config in ipairs(utils.Map(utils.Split(f:read("*a")), utils.GetPrefix)) do
+        if theme_config == theme then
+            return true
+        end
+    end
+
+    return false
 end
+
+-- [[ Color setup ]] --
 
 local function set_transparency()
     if not config.transparent then
         return
     end
+
     local none_bg = { bg="none", ctermbg="none" }
+
     vim.api.nvim_set_hl(0, "Normal", none_bg)
     vim.api.nvim_set_hl(0, "NormalNC", none_bg)
     vim.api.nvim_set_hl(0, "SignColumn", none_bg)
@@ -56,9 +75,9 @@ local function set_transparency()
 end
 
 local function hi_extra_whitespace()
-    vim.api.nvim_command("hi def link ExtraWhitespace SpellBad")
     vim.cmd([[
-        highlight ExtraWhitespace cterm=undercurl gui=undercurl guisp=#c53b53
+        hi def link ExtraWhitespace SpellBad
+        hi ExtraWhitespace cterm=undercurl gui=undercurl guisp=#c53b53
         match ExtraWhitespace /\s\+$/
         au BufWinEnter * match ExtraWhitespace /\s\+$/
         au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
@@ -68,6 +87,7 @@ local function hi_extra_whitespace()
     ]])
 end
 
+-- reload theme and options
 local function reload_theme()
     local theme = get_theme()
     if theme == nil then
@@ -77,11 +97,9 @@ local function reload_theme()
     local theme_config = find_config(theme)
     theme_config()
 
-    if has_colors_folder(theme) then
+    if has_packer_folder(theme) then
         require('lualine').setup {
-            options = {
-                theme = theme
-            }
+            options = { theme = theme }
         }
     end
 
@@ -92,9 +110,9 @@ local function reload_theme()
     set_transparency()
     hi_extra_whitespace()
     theme_config()
-
-    print('Current theme: ' .. theme)
 end
+
+-- [[ Global functions ]] --
 
 function M.setup(user_config)
     config = vim.tbl_deep_extend('keep', user_config, default_config)
@@ -104,11 +122,13 @@ end
 function NextTheme()
     config.current_theme = (config.current_theme) % utils.Len(config.themes) + 1
     reload_theme()
+    print('Current theme: ' .. get_theme())
 end
 
 function PrevTheme()
     config.current_theme = (config.current_theme - 2) % utils.Len(config.themes) + 1
     reload_theme()
+    print('Current theme: ' .. get_theme())
 end
 
 function SetTheme(theme)

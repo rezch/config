@@ -12,7 +12,7 @@ require('plugins/themes/theme_setup').setup({
         'nordbones',
         'unokai',
     },
-    current_theme = 4,
+    current_theme = 2,
 })
 
 vim.cmd([[

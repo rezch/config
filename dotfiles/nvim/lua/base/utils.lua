@@ -54,7 +54,7 @@ function M.exists(file)
 end
 
 function M.isdir(path)
-   return M.exists(path.."/")
+   return M.exists(path .. "/")
 end
 
 return M

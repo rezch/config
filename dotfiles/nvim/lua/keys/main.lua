@@ -3,7 +3,6 @@ require('keys/plugins')
 
 map.im('<C-k>', '<escape>')
 
-
 -- [[ Tabs ]] --
 map.nm('<CA-Right>', '<cmd>bnext<CR>')
 map.vm('<CA-Right>', '<C-C>:bnext<CR>')

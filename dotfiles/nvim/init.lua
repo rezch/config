@@ -12,7 +12,7 @@ require('plugins/themes/theme_setup').setup({
         'kanagawa',
         'everforest',
     },
-    current_theme = 1,
+    current_theme = 5,
 })
 
 vim.cmd([[

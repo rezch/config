@@ -1,12 +1,12 @@
 local neoscroll = require('neoscroll')
 local utils = require('base/utils')
 
-local mk = utils.os() == 'Darwin' and 'M' or 'C'
-
+local mk  = utils.os() == 'OSX' and 'M' or 'C'
+local mks = utils.os() == 'OSX' and 'MS' or 'CA'
 
 local keymap = {
-  ["<"..mk.."A-Up>"] = function() neoscroll.ctrl_u({ duration = 250 }) end;
-  ["<"..mk.."A-Down>"] = function() neoscroll.ctrl_d({ duration = 250 }) end;
+  ["<"..mks.."-Up>"] = function() neoscroll.ctrl_u({ duration = 250 }) end;
+  ["<"..mks.."-Down>"] = function() neoscroll.ctrl_d({ duration = 250 }) end;
   ["<"..mk.."-b>"] = function() neoscroll.ctrl_b({ duration = 450 }) end;
   ["<"..mk.."-f>"] = function() neoscroll.ctrl_f({ duration = 450 }) end;
   ["<"..mk.."-Up>"] = function() neoscroll.scroll(-0.1, { move_cursor=true; duration = 100 }) end;
@@ -17,7 +17,6 @@ local keymap = {
 }
 
 local modes = { 'n', 'v', 'x' }
-
 for key, func in pairs(keymap) do
   vim.keymap.set(modes, key, func)
 end

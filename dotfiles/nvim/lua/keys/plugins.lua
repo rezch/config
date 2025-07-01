@@ -1,35 +1,33 @@
+local map = require('keys/alias')
+
 vim.g.mapleader = '\\'
 
 
 -- [[ ViCom ]] --
-nm('<leader>c', ':ViComLines<CR>')
-vm('<leader>c', '<C-S>:ViComLines<CR>')
-im('<leader>c', '<C-O>:ViComLines<CR>')
+map.all('<leader>c', ':ViComLines<CR>')
 
 
 -- [[ NvimTree ]] --
-nm('T', ':NvimTreeToggle<CR><C-w>w')
-nm('<leader>t', ':NvimTreeFocus<CR>')
+map.nm('T', ':NvimTreeToggle<CR><C-w>w')
+map.nm('<leader>t', ':NvimTreeFocus<CR>')
 vim.keymap.set('n', '?', require('nvim-tree.api').tree.toggle_help)
 
 
 -- [[ Save ]] --
-nm('<C-S>', '<cmd>update<CR>')
-vm('<C-S>', '<C-C>:update<CR>')
-im('<C-S>', '<C-O>:update<CR>')
+map.all('<C-S>', '<cmd>update<CR>')
 
 
 -- [[ Themes ]] --
-local themes_setup = require('plugins/themes/theme_setup')
-vim.keymap.set("n", "<leader>tn", NextTheme)
-vim.keymap.set("n", "<leader>tp", PrevTheme)
+require('plugins/themes/theme_setup')
+map.nm("<leader>tn", "NextTheme")
+map.nm("<leader>tp", "PrevTheme")
 
 
 -- [[ LSP ]] --
-vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action)
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
+map.all("<leader>r", "vim.lsp.buf.rename")
+map.all("<leader>f", "vim.lsp.buf.format")
+map.all("<leader>a", "vim.lsp.buf.code_action")
+map.all("<leader>e", "vim.diagnostic.open_float")
 
 
 -- [[ Telescope ]] --
@@ -47,5 +45,5 @@ end)
 
 
 -- [[ Signify ]] --
-nm('<leader>d', ':SignifyHunkDiff<CR>')
-nm('<leader>du', ':SignifyHunkUndo<CR>')
+map.nm('<leader>d', ':SignifyHunkDiff<CR>')
+map.nm('<leader>du', ':SignifyHunkUndo<CR>')

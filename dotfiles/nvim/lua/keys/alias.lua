@@ -1,23 +1,33 @@
 -- [[ fast key mapping ]] --
 
-local map = vim.api.nvim_set_keymap 
+local map = vim.api.nvim_set_keymap
+
+local M = { }
 
 -- [[ normal ]] --
-function nm(key, command) 
+function M.nm(key, command)
     map('n', key, command, {noremap = true})
 end
 
 -- [[ input ]] --
-function im(key, command)
+function M.im(key, command)
     map('i', key, command, {noremap = true})
 end
 
 -- [[ visual ]] --
-function vm(key, command)
+function M.vm(key, command)
     map('v', key, command, {noremap = true})
 end
 
 -- [[ terminal ]] --
-function tm(key, command)
+function M.tm(key, command)
     map('t', key, command, {noremap = true})
 end
+
+function M.all(key, command)
+    M.nm(key, command)
+    M.im(key, '<C-C>' .. command)
+    M.vm(key, '<C-O>' .. command)
+end
+
+return M

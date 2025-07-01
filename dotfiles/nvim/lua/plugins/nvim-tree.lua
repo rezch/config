@@ -1,11 +1,17 @@
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
--- vim.opt.termguicolors = true
+local utils = require('base/utils')
+
+local function winSize()
+    local size = utils.intdiv(vim.api.nvim_win_get_width(0), 7)
+    return size > 10 and size or 0
+end
 
 vim.api.nvim_create_autocmd("VimEnter", {
     pattern = "*",
     once = true,
     callback = function(_)
+        if winSize() == 0 then
+            return
+        end
         vim.cmd([[
         NvimTreeToggle
         wincmd p
@@ -28,7 +34,7 @@ require("nvim-tree").setup({
         sorter = "case_sensitive",
     },
     view = {
-        width = 32,
+        width = winSize(),
     },
     renderer = {
         group_empty = true,

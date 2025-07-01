@@ -4,6 +4,7 @@ local lspconfig = require('lspconfig')
 vim.lsp.enable('gopls')
 vim.lsp.enable('bashls')
 vim.lsp.enable('pyright')
+vim.lsp.enable('hls')
 
 vim.diagnostic.config({
     virtual_text = true,
@@ -37,7 +38,7 @@ lspconfig.intelephense.setup({
 })
 
 local function get_cpp_flags()
-    if (filetype == "cpp") then
+    if (filetype == 'cpp') then
         return { '-std=c++2b' }
     end
     return { }
@@ -47,10 +48,11 @@ lspconfig.clangd.setup({
     cmd = {
         'clangd',
         '--background-index',
+        '-j=8',
         '--clang-tidy',
         '--log=verbose',
-        "--completion-style=detailed",
-        "--function-arg-placeholders=true",
+        '--completion-style=detailed',
+        '--function-arg-placeholders=true',
     },
     capabilities = {
         textDocument = {
@@ -70,7 +72,7 @@ lspconfig.clangd.setup({
             DeducedTypes = true,
         },
         fallbackFlags = get_cpp_flags(),
-        extra_args = { "--style=file" },
+        extra_args = { '--style=file' },
     },
 })
 

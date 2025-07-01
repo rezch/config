@@ -90,19 +90,19 @@ inoremap <leader>c <C-O>:ViComLines<CR>
 " -------------------------------------
 
 " SCROLL ------------------------------
-nnoremap <M-Up>           :call smooth_scroll#up  (2, 2, 1)<CR>
-nnoremap <M-Down>         :call smooth_scroll#down(3, 2, 1)<CR>
-inoremap <M-Up>      <C-O>:call smooth_scroll#up  (2, 2, 1)<CR>
-inoremap <M-Down>    <C-O>:call smooth_scroll#down(2, 2, 1)<CR>
-vnoremap <M-Up>           :call smooth_scroll#up  (2, 2, 1)<CR>
-vnoremap <M-Down>         :call smooth_scroll#down(2, 2, 1)<CR>
+nnoremap <C-Up>           :call smooth_scroll#up  (2, 2, 1)<CR>
+nnoremap <C-Down>         :call smooth_scroll#down(3, 2, 1)<CR>
+inoremap <C-Up>      <C-O>:call smooth_scroll#up  (2, 2, 1)<CR>
+inoremap <C-Down>    <C-O>:call smooth_scroll#down(2, 2, 1)<CR>
+vnoremap <C-Up>           :call smooth_scroll#up  (2, 2, 1)<CR>
+vnoremap <C-Down>         :call smooth_scroll#down(2, 2, 1)<CR>
 " fast scroll
-nnoremap <M-S-Up>         :call smooth_scroll#up  (5, 5, 1)<CR>
-nnoremap <M-S-Down>       :call smooth_scroll#down(5, 5, 1)<CR>
-inoremap <M-S-Up>    <C-O>:call smooth_scroll#up  (5, 5, 1)<CR>
-inoremap <M-S-Down>  <C-O>:call smooth_scroll#down(5, 5, 1)<CR>
-vnoremap <M-S-Up>         :call smooth_scroll#up  (5, 5, 1)<CR>
-vnoremap <M-S-Down>       :call smooth_scroll#down(5, 5, 1)<CR>
+nnoremap <C-S-Up>         :call smooth_scroll#up  (5, 5, 1)<CR>
+nnoremap <C-S-Down>       :call smooth_scroll#down(5, 5, 1)<CR>
+inoremap <C-S-Up>    <C-O>:call smooth_scroll#up  (5, 5, 1)<CR>
+inoremap <C-S-Down>  <C-O>:call smooth_scroll#down(5, 5, 1)<CR>
+vnoremap <C-S-Up>         :call smooth_scroll#up  (5, 5, 1)<CR>
+vnoremap <C-S-Down>       :call smooth_scroll#down(5, 5, 1)<CR>
 " -------------------------------------
 
 " NERDTree ----------------------------

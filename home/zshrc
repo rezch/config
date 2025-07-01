@@ -225,6 +225,10 @@ function killall {
     kill -9 $( fdpc $@ | awk '{print $2}' )
 }
 
+function killlast {
+    kill -9 $( fdpc $@ | awk '{print $2}' | sort -rn | sed '2p;d' )
+}
+
 if [[ -n $XDG_CURRENT_DESKTOP ]]; then
     function discord {
         onbg discord --ozone-platform=wayland
@@ -265,6 +269,7 @@ export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 export EXA_COLORS="*.md=38;5;68:*.log=38;5;68:*.c=38;5;169:*.h=38;5;135:*.o=38;5;97:*.y=38;5;99:*.l=38;5;99:*.sh=38;5;104"
 
 export PATH=$PATH:/home/rezch/.local/bin/
+export PATH="$HOME/.cabal/bin:$PATH"
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 

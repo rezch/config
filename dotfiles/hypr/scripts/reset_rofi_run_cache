@@ -5,8 +5,8 @@ from pathlib import Path
 
 
 HOME = Path().home()
-RUNCACHE_FILE  = HOME / ".cache/rofi-4.runcache"
-DRUNCACHE_FILE = HOME / ".cache/rofi3.druncache"
+RUNCACHE_FILE  = HOME/".cache/rofi-4.runcache"
+DRUNCACHE_FILE = HOME/".cache/rofi3.druncache"
 
 
 def reset_cache(line):

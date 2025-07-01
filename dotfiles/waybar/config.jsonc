@@ -11,7 +11,7 @@
         "hyprland/workspaces",
         "custom/sep",
         "hyprland/window"],
-    "modules-center": ["custom/music-player"],
+    // "modules-center": ["custom/music-player"],
     "modules-right": [
         "custom/keyboard-layout",
         // "custom/screen-recorder",
@@ -26,7 +26,7 @@
 
     "custom/keyboard-layout": {
         "return-type": "json",
-        "exec": "hypr-kbd-layout", 
+        "exec": "hypr-kbd-layout",
         "format": "{}"
     },
 
@@ -40,15 +40,15 @@
     //     "on-click-right": "~/.config/waybar/modules/screen_recorder.sh stop",
     // },
 
-    "custom/music-player": {
-        "interval": 1,
-        "format": "{}",
-        "return-type": "json",
-        "exec": "~/.config/waybar/modules/music_player.sh grep",
-        "on-click": "~/.config/waybar/modules/music_player.sh previous",
-        "on-click-middle": "~/.config/waybar/modules/music_player.sh pause",
-        "on-click-right": "~/.config/waybar/modules/music_player.sh next",
-    },
+    // "custom/music-player": {
+    //     "interval": 1,
+    //     "format": "{}",
+    //     "return-type": "json",
+    //     "exec": "~/.config/waybar/modules/music_player.sh grep",
+    //     "on-click": "~/.config/waybar/modules/music_player.sh previous",
+    //     "on-click-middle": "~/.config/waybar/modules/music_player.sh pause",
+    //     "on-click-right": "~/.config/waybar/modules/music_player.sh next",
+    // },
 
     "wlr/workspaces": {
         "on-click": "activate",
@@ -78,7 +78,6 @@
     },
 
     "clock#date": {
-        // "format": "  {:L%a %d %b}",
         "format": "  {:L%d.%m.%Y}",
         "locale": "en_IE.UTF-8",
         "tooltip-format": "<tt>{calendar}</tt>",
@@ -111,6 +110,7 @@
         },
         "on-click-middle": "pamixer -t",
         "on-click": "pavucontrol",
+        // on-double-click
     },
 
     "pulseaudio#microphone": {

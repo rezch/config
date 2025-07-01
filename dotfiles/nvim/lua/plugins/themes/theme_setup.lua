@@ -2,6 +2,7 @@ local utils = require('base/utils')
 
 local M = { }
 
+-- [[ Config ]] --
 local default_config = {
     themes = { },
     current_theme = 0,
@@ -18,18 +19,17 @@ local function get_theme()
 end
 
 -- [[ Check config files existence ]] --
-
 local function find_config_impl(theme)
     local path = "~/.config/nvim/lua/plugins/themes";
-    local f = io.popen("dir " .. path)
+    local f = io.popen("ls " .. path)
     if not f then
         return
     end
 
-    theme = utils.GetPrefix(theme)
-    for _, theme_config in ipairs(utils.Map(utils.Split(f:read("*a")), utils.GetPrefix)) do
-        if theme_config == theme then
-            return require('plugins/themes/' .. theme_config)
+    theme = utils.get_prefix(theme)
+    for _, theme_config in ipairs(utils.split(f:read("*a"))) do
+        if utils.get_prefix(theme_config) == theme then
+            return require('plugins/themes/' .. utils.split_filename(theme_config))
         end
     end
 end
@@ -41,24 +41,10 @@ local function find_config(theme)
             or function() end
 end
 
-local function has_packer_folder(theme)
-    local path = "~/.local/share/nvim/site/pack/packer/start";
-    local f = io.popen("dir " .. path)
-    if not f then
-        return false
-    end
-
-    theme = utils.GetPrefix(theme)
-    for _, theme_config in ipairs(utils.Map(utils.Split(f:read("*a")), utils.GetPrefix)) do
-        if theme_config == theme then
-            return true
-        end
-    end
-
-    return false
-end
-
 -- [[ Color setup ]] --
+local function set_hi(...)
+    vim.api.nvim_set_hl(0, ...)
+end
 
 local function set_transparency()
     if not config.transparent then
@@ -66,18 +52,24 @@ local function set_transparency()
     end
 
     local none_bg = { bg="none", ctermbg="none" }
+    local hi_params = {
+        "Normal",
+        "NormalNC",
+        "SignColumn",
+        "NvimTreeIndentMarker",
+        "NvimTreeNormal",
+        "NvimTreeEndOfBuffer",
+    }
 
-    vim.api.nvim_set_hl(0, "Normal", none_bg)
-    vim.api.nvim_set_hl(0, "NormalNC", none_bg)
-    vim.api.nvim_set_hl(0, "SignColumn", none_bg)
-    vim.api.nvim_set_hl(0, "NvimTreeIndentMarker", none_bg)
-    vim.api.nvim_set_hl(0, "NvimTreeNormal", none_bg)
+    for _, param in ipairs(hi_params) do
+        set_hi(param, none_bg)
+    end
 end
 
 local function hi_extra_whitespace()
+    set_hi("ExtraWhitespace", { link = "SpellBad" })
+
     vim.cmd([[
-        hi def link ExtraWhitespace SpellBad
-        hi ExtraWhitespace cterm=undercurl gui=undercurl guisp=#c53b53
         match ExtraWhitespace /\s\+$/
         au BufWinEnter * match ExtraWhitespace /\s\+$/
         au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
@@ -97,12 +89,6 @@ local function reload_theme()
     local theme_config = find_config(theme)
     theme_config()
 
-    if has_packer_folder(theme) then
-        require('lualine').setup {
-            options = { theme = theme }
-        }
-    end
-
     vim.o.background = config.mode
     vim.o.termguicolors = true
     vim.cmd.colorscheme(theme)
@@ -113,27 +99,26 @@ local function reload_theme()
 end
 
 -- [[ Global functions ]] --
-
 function M.setup(user_config)
     config = vim.tbl_deep_extend('keep', user_config, default_config)
     reload_theme()
 end
 
 function NextTheme()
-    config.current_theme = (config.current_theme) % utils.Len(config.themes) + 1
+    config.current_theme = (config.current_theme) % utils.len(config.themes) + 1
     reload_theme()
     print('Current theme: ' .. get_theme())
 end
 
 function PrevTheme()
-    config.current_theme = (config.current_theme - 2) % utils.Len(config.themes) + 1
+    config.current_theme = (config.current_theme - 2) % utils.len(config.themes) + 1
     reload_theme()
     print('Current theme: ' .. get_theme())
 end
 
 function SetTheme(theme)
-    utils.Append(config.themes, theme)
-    config.current_theme = utils.Len(config.themes)
+    utils.append(config.themes, theme)
+    config.current_theme = utils.len(config.themes)
     reload_theme()
 end
 

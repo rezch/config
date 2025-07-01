@@ -10,13 +10,13 @@ vim.opt.splitbelow = false
 vim.opt.clipboard = 'unnamedplus'
 
 -- [[ Disable autocomment new lines ]] --
-vim.cmd [[autocmd BufEnter * set fo-=c fo-=r fo-=o]]
+vim.cmd(" autocmd BufEnter * set fo-=c fo-=r fo-=o ")
 
 vim.api.nvim_create_autocmd("BufReadPost", {
-    pattern = {"*"},
+    pattern = { "*" },
     callback = function()
         if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
-            vim.api.nvim_exec("normal! g'\"",false)
+            vim.api.nvim_exec("normal! g'\"", false)
         end
     end
 })
@@ -54,3 +54,5 @@ vim.opt.fixeol = false
 -- disable nvim autocomplete
 vim.opt.completeopt = 'menuone,noselect'
 
+-- disable folding
+vim.cmd(" set nofoldenable ")

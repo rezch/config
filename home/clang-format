@@ -22,7 +22,7 @@ Cpp11BracedListStyle: false
 # SpaceAfterOperatorKeyword: true # clang-format 21
 
 # Indents
-# ContinuationIndentWidth: 4
+ContinuationIndentWidth: 8
 AccessModifierOffset: -4
 AlignConsecutiveAssignments:
   Enabled: true
@@ -50,14 +50,54 @@ BreakBeforeTernaryOperators: true
 BreakBeforeBraces: Custom
 BraceWrapping:
   AfterFunction: true
+  BeforeElse: true
   BeforeLambdaBody: true
   SplitEmptyNamespace: false
   SplitEmptyFunction: false
   SplitEmptyRecord: false
 ---
 Language: C
-AlignConsecutiveAssignments: true
-Cpp11BracedListStyle: false
-BreakBeforeTernaryOperators: true
+
 SpaceInEmptyBlock: true
+AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: All
+
+# Empty lines
+MaxEmptyLinesToKeep: 2
+
+# Spaces
+SpaceBeforeParens: Custom
+SpaceBeforeParensOptions:
+Cpp11BracedListStyle: false
+
+ContinuationIndentWidth: 8
+AccessModifierOffset: -4
+AlignConsecutiveAssignments:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: true
+  AlignCompound: true
+AlignAfterOpenBracket: AlwaysBreak
+BinPackParameters: OnePerLine
+BinPackArguments: false
+AlignTrailingComments:
+  Kind: Always
+  OverEmptyLines: 0
+AllowShortCaseExpressionOnASingleLine: true
+BreakBeforeBinaryOperators: NonAssignment
+AlignArrayOfStructures: Right
+IndentExternBlock: NoIndent
+IndentPPDirectives: BeforeHash
+PPIndentWidth: 1
+ReflowComments: IndentOnly
+ColumnLimit: 0
+
+# Braces
+BreakBeforeTernaryOperators: true
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: true
+  BeforeElse: true
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
 ---

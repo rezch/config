@@ -12,6 +12,7 @@ require('plugins/themes/theme_setup').setup({
         'kanagawa',
         'everforest',
     },
+    transparent = false,
     current_theme = 5,
 })
 

@@ -1,14 +1,15 @@
-return function()
+return function(config)
+    local style = config.transparent and "transparent" or "normal"
     require("tokyonight").setup({
         style = "storm",
-        transparent = true,
+        transparent = config.transparent,
         styles = {
             comments = { italic = true },
             keywords = { italic = true },
             functions = {},
             variables = {},
-            sidebars = "transparent",
-            floats = "transparent",
+            sidebars = style,
+            floats = style,
         },
     })
 end

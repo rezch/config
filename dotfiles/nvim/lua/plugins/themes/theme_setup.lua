@@ -38,7 +38,7 @@ local function find_config(theme)
     local theme_config = find_config_impl(theme)
     return theme_config ~= nil
             and theme_config
-            or function() end
+            or function(...) end
 end
 
 -- [[ Color setup ]] --
@@ -87,7 +87,7 @@ local function reload_theme()
     end
 
     local theme_config = find_config(theme)
-    theme_config()
+    theme_config(config)
 
     vim.o.background = config.mode
     vim.o.termguicolors = true
@@ -95,7 +95,7 @@ local function reload_theme()
 
     set_transparency()
     hi_extra_whitespace()
-    theme_config()
+    theme_config(config)
 end
 
 -- [[ Global functions ]] --

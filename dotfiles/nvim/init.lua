@@ -13,7 +13,7 @@ require('plugins/themes/theme_setup').setup({
         'everforest',
     },
     transparent = false,
-    current_theme = 5,
+    current_theme = 6,
 })
 
 vim.cmd([[

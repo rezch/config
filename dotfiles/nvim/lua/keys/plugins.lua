@@ -12,9 +12,6 @@ map.nm('T', ':NvimTreeToggle<CR><C-w>w')
 map.nm('<leader>t', ':NvimTreeFocus<CR>')
 vim.keymap.set('n', '?', require('nvim-tree.api').tree.toggle_help)
 
--- [[ Save ]] --
-map.all('<C-S>', '<cmd>update<CR>')
-
 -- [[ Themes ]] --
 require('plugins/themes/theme_setup')
 vim.keymap.set('n', '<leader>tn', NextTheme)

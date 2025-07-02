@@ -74,7 +74,7 @@ function M.is_unix()
 end
 
 -- return: os
--- { jit.os result, 'Linux', 'Darwin', 'Windows' }
+-- { jit.os result, 'Linux', 'OSX', 'Windows' }
 function M.os()
     if jit then
         return jit.os

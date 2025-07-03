@@ -2,6 +2,7 @@
 
 LGREEN="\033[1;32m"
 GREEN="\033[0;32m"
+LRED="\033[1;31m"
 RED="\033[0;31m"
 LPURPLE="\033[1;35m"
 NC="\033[0m"
@@ -15,7 +16,7 @@ DOTCONF_FOLDERS=(
     "foot"
     "hypr"
     "kitty"
-    # "nekoray/config"
+    "nekoray/config"
     "nvim"
     "rofi"
     "waybar"
@@ -31,9 +32,12 @@ HOME_CONFIGS=(
     "zshrc"
 )
 
-# EXCLUDE=(
-#     "$DOTCONF_RESULT_PATH/nekoray/config/profiles/0.json"
-# )
+EXCLUDE=(
+    "*/profiles/0.json"
+    "*/dashboard/index.html"
+    "*.png"
+    "*.bak"
+)
 
 DIFF="diff -r \
    --exclude="*.bak" \
@@ -61,7 +65,7 @@ do
         rm -rf "$DOTCONF_RESULT_PATH/$folder"
         cp -r "$DOTCONF_PATH/$folder" "$DOTCONF_RESULT_PATH/$( dirname $folder )"
         echo "Copyied"
-        ((FOLDERS_DIFF++))
+        FOLDERS_DIFF=$(( FOLDERS_DIFF + 1 ))
     fi
 done
 
@@ -83,12 +87,14 @@ do
     fi
 done
 
+function remove_excess() {
+    echo -e "Removing $@"
+    rm -rf "$@"
+}
+
 for entity in "${EXCLUDE[@]}"
 do
-    if [[ -d "$entity/" ]] || [[ -f "$entity" ]]; then
-        echo -e "${LRED}Removing $entity ${NC}"
-        rm -rf "$entity"
-    fi
+    find . -path "$entity" -exec bash -c 'remove_excess "$0"' {} \;
 done
 
 if [[ $((${FOLDERS_DIFF} + ${FILES_DIFF})) > 0 ]]; then

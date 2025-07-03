@@ -94,6 +94,7 @@ local function reload_theme()
     vim.cmd.colorscheme(theme)
 
     set_transparency()
+
     hi_extra_whitespace()
     theme_config(config)
 end

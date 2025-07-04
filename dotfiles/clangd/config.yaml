@@ -1,5 +1,14 @@
-if:
-  PathMatch: \.(c|hc)$
+If:
+  PathMatch: .*\.cpp
+
+CompileFlags:
+  Add: [-std=c++2c, -Wall, -Wextra]
+
+---
+
+If:
+  PathMatch: .*\.c
+
 CompileFlags:
   Add: [
     -xc,
@@ -7,10 +16,3 @@ CompileFlags:
     -Werror=missing-braces,
     -DMYLOCAL
   ]
-
-if:
-  PathMatch: \.(cpp|h)$
-CompileFlags:
-  Add: [
-    -std=c++2c
-]

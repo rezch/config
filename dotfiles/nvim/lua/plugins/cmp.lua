@@ -16,8 +16,8 @@ cmp.setup{
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
         }),
-        ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
-        ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+        -- ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
+        -- ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
         ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
         ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
     },
@@ -30,10 +30,24 @@ cmp.setup{
         { name = 'path' },
         { name = "emoji" },
     }, { }),
+
     formatting = {
         format = lspkind.cmp_format({
             mode = 'symbol', -- show only symbol annotations
             maxwidth = 50,   -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
         })
-    }
+    },
+
+    sorting = {
+        comparators = {
+            cmp.config.compare.offset,
+            cmp.config.compare.exact,
+            cmp.config.compare.recently_used,
+            require("clangd_extensions.cmp_scores"),
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+        },
+    },
 }

@@ -16,7 +16,7 @@ vim.diagnostic.config({
         focusable = false,
         style = 'minimal',
         border = 'rounded',
-        source = 'always',
+        -- source = 'always',
         header = '',
         prefix = '',
     },
@@ -52,7 +52,7 @@ lspconfig.clangd.setup({
         '--clang-tidy',
         '--log=verbose',
         '--completion-style=detailed',
-        '--function-arg-placeholders=true',
+        '--function-arg-placeholders=0',
     },
     capabilities = {
         textDocument = {
@@ -62,15 +62,7 @@ lspconfig.clangd.setup({
         }
     },
     init_options = {
-        usePlaceholders = true,
-        completeUnimported = true,
         clangdFileStatus = true,
-        InlayHints = {
-            Designators = true,
-            Enabled = true,
-            ParameterNames = true,
-            DeducedTypes = true,
-        },
         fallbackFlags = get_cpp_flags(),
         extra_args = { '--style=file' },
     },

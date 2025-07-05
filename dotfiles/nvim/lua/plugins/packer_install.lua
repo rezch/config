@@ -31,6 +31,14 @@ return require('packer').startup(function()
 
     use { 'p00f/clangd_extensions.nvim' }
 
+    use({
+        "MysticalDevil/inlay-hints.nvim",
+        requires = { "neovim/nvim-lspconfig" },
+        config = function()
+            require('plugins/inlay-hints')
+        end
+    })
+
     use { 'onsails/lspkind-nvim' }
 
     use({

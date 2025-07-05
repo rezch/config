@@ -9,7 +9,7 @@
 window#waybar {
     transition-property: background-color;
     transition-duration: 0.5s;
-    background-color: rgba(36, 24, 37, 0.8);
+    background-color: rgba(72, 88, 78, 0.6);
 }
 
 window#waybar.hidden {
@@ -41,7 +41,7 @@ window#waybar.hidden {
 
 #workspaces button.active {
     color: #1e1e2e;
-    background-color: #d981cf;
+    background-color: #7fbbb3;
 }
 
 #workspaces button.urgent {
@@ -72,7 +72,7 @@ window#waybar.hidden {
     border-radius: 8px;
     margin: 4px 4px;
     background-color: #181825;
-    color: #ff709d;
+    color: #e69875;
 }
 /* #custom-sep {
     padding: 0px;
@@ -121,7 +121,7 @@ window#waybar.empty #window {
 }
 
 #clock {
-    color: #d573b9;
+    color: #83c092;
 }
 
 #clock.simpleclock {

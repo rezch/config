@@ -15,3 +15,8 @@ hash = "a48aa4d7140c52cdd14552039b632800"
 use = "yazi-rs/flavors:dracula"
 rev = "d04a298"
 hash = "7b9ff01a0070cc9176e0c683329aeb26"
+
+[[flavor.deps]]
+use = "Chromium-3-Oxide/everforest-medium"
+rev = "3d5f847"
+hash = "9b4190e2447f2c843fee23ea5f068f6"

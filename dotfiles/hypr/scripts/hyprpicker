@@ -1,0 +1,2 @@
+#!/bin/bash
+hyprpicker | tr -d '\n' | sed 's/^.*#/#/' | wl-copy

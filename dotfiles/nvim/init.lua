@@ -5,6 +5,7 @@ require('keys/main')
 
 require('plugins/themes/theme_setup').setup({
     themes = {
+        'zenbones',
         'witchesbrew',
         'tokyonight-moon',
         'zenburned',
@@ -13,7 +14,7 @@ require('plugins/themes/theme_setup').setup({
         'everforest',
     },
     transparent = false,
-    current_theme = 6,
+    current_theme = 1,
 })
 
 vim.cmd([[

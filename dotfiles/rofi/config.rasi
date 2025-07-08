@@ -1,4 +1,4 @@
 // @theme "/usr/share/rofi/themes/purple.rasi"
-@theme "./everforest.rasi"
+@theme "./rounded-gray-dark.rasi"
 
 @import "cfg"

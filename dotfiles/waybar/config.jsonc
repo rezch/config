@@ -11,11 +11,11 @@
         "hyprland/workspaces",
         "custom/sep",
         "hyprland/window"],
-    // "modules-center": ["custom/music-player"],
+    // "modules-center": [
+    //     "cava",
+    // ],
     "modules-right": [
         "custom/keyboard-layout",
-        // "custom/screen-recorder",
-        // "custom/sep",
         "pulseaudio",
         "pulseaudio#microphone",
         "clock",
@@ -29,26 +29,6 @@
         "exec": "hypr-kbd-layout",
         "format": "{}"
     },
-
-    // "custom/screen-recorder": {
-    //     "exec": "~/.config/waybar/modules/screen_recorder_init.sh",
-    //     "interval": 1,
-    //     "return-type": "json",
-    //     "format": "{}",
-    //     "on-click": "~/.config/waybar/modules/screen_recorder.sh save",
-    //     "on-click-middle": "~/.config/waybar/modules/screen_recorder.sh restart",
-    //     "on-click-right": "~/.config/waybar/modules/screen_recorder.sh stop",
-    // },
-
-    // "custom/music-player": {
-    //     "interval": 1,
-    //     "format": "{}",
-    //     "return-type": "json",
-    //     "exec": "~/.config/waybar/modules/music_player.sh grep",
-    //     "on-click": "~/.config/waybar/modules/music_player.sh previous",
-    //     "on-click-middle": "~/.config/waybar/modules/music_player.sh pause",
-    //     "on-click-right": "~/.config/waybar/modules/music_player.sh next",
-    // },
 
     "wlr/workspaces": {
         "on-click": "activate",
@@ -110,7 +90,6 @@
         },
         "on-click-middle": "pamixer -t",
         "on-click": "pavucontrol",
-        // on-double-click
     },
 
     "pulseaudio#microphone": {
@@ -124,14 +103,14 @@
         "tooltip-format": "{source_desc} | {source_volume}%",
     },
 
-    "custom/sep": {
-        "format": "|",
-        "tooltip": false,
-    },
+    // "custom/sep": {
+    //     "format": "|",
+    //     "tooltip": false,
+    // },
 
-    "custom/power": {
-        "tooltip": false,
-        "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh &",
-        "format": "⏻ ",
-    },
+    // "custom/power": {
+    //     "tooltip": false,
+    //     "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh &",
+    //     "format": "⏻ ",
+    // },
 }

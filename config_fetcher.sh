@@ -26,10 +26,10 @@ DOTCONF_FOLDERS=(
 
 HOME_RESULT_PATH=$SCRIPT_DIR/home
 HOME_CONFIGS=(
-    "clang-format"
-    "p10k.zsh"
-    "vimrc"
-    "zshrc"
+    ".clang-format"
+    ".p10k.zsh"
+    ".vimrc"
+    ".zshrc"
 )
 
 EXCLUDE=(
@@ -71,7 +71,7 @@ done
 
 for file in "${HOME_CONFIGS[@]}"
 do
-    if [[ ! -f "$HOME/.$file" ]]; then
+    if [[ ! -f "$HOME/$file" ]]; then
         echo -e "${RED}Cannot find file: $HOME/.$file ${NC}"
         continue
     fi
@@ -79,9 +79,9 @@ do
         echo -e "${LGREEN}New file $HOME_RESULT_PATH/$file ${NC}"
         touch "$HOME_RESULT_PATH/$file"
     fi
-    if [[ $(diff "$HOME_RESULT_PATH/$file" "$HOME/.$file") ]]; then
+    if [[ $(diff "$HOME_RESULT_PATH/$file" "$HOME/$file") ]]; then
         echo "Found diff in $file"
-        cp "$HOME/.$file" "$HOME_RESULT_PATH/$file"
+        cp "$HOME/$file" "$HOME_RESULT_PATH/$file"
         echo "Copyied"
         ((FILES_DIFF++))
     fi

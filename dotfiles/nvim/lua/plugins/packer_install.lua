@@ -57,8 +57,6 @@ return require('packer').startup(function()
         end
     })
 
-    use { 'rluba/jai.vim' }
-
     -- Moving
 
     use {

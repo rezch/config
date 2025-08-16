@@ -22,6 +22,7 @@ vim.keymap.set(all_modes, '<leader>r', vim.lsp.buf.rename)
 vim.keymap.set(all_modes, '<leader>f', vim.lsp.buf.format)
 vim.keymap.set(all_modes, '<leader>a', vim.lsp.buf.code_action)
 vim.keymap.set(all_modes, '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set(all_modes, '<leader>h', ':ClangdSwitchSourceHeader<CR>')
 
 -- [[ Telescope ]] --
 local builtin = require('telescope.builtin')

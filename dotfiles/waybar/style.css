@@ -9,7 +9,9 @@
 window#waybar {
     transition-property: background-color;
     transition-duration: 0.5s;
-    background-color: rgba(72, 88, 78, 0.6);
+
+    /* Bg color */
+    background-color: rgba(56, 56, 56, 0.4);
 }
 
 window#waybar.hidden {
@@ -41,7 +43,7 @@ window#waybar.hidden {
 
 #workspaces button.active {
     color: #1e1e2e;
-    background-color: #7fbbb3;
+    background-color: #c1c1c1;
 }
 
 #workspaces button.urgent {
@@ -71,8 +73,10 @@ window#waybar.hidden {
     padding: 2px 10px;
     border-radius: 8px;
     margin: 4px 4px;
+
+    /* Current window */
     background-color: #181825;
-    color: #e69875;
+    color: #dd9999;
 }
 /* #custom-sep {
     padding: 0px;
@@ -83,7 +87,7 @@ window#waybar.hidden {
     color: #a6adc8;
 }
 
-#custom-screen-recorder.recording {
+/*#custom-screen-recorder.recording {
     color: #10ef2c;
 }
 
@@ -97,13 +101,13 @@ window#waybar.hidden {
 
 #custom-music-player.paused {
     color: #9399b2;
-}
+}*/
 
 window#waybar.empty #window {
     background-color: transparent;
 }
 
-#cpu {
+/*#cpu {
     color: #94e2d5;
     margin-left: 0;
     margin-right: 0;
@@ -118,10 +122,10 @@ window#waybar.empty #window {
 #memory {
     margin-left: 0;
     color: #cba6f7;
-}
+}*/
 
 #clock {
-    color: #83c092;
+    color: #5f8787;
 }
 
 #clock.simpleclock {

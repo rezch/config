@@ -10,8 +10,8 @@ cmp.setup{
 
     mapping = {
         ['<C-p>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-        ['<CR>'] = cmp.config.disable,
-        ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+        -- ['<CR>']  = cmp.mapping.confirm({ select = true }),
+        ['<Tab>'] = cmp.config.disable,
         ['<C-e>'] = cmp.mapping({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),

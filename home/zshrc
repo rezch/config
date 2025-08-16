@@ -230,8 +230,8 @@ function killlast {
 }
 
 if [[ -n $XDG_CURRENT_DESKTOP ]]; then
-    function discord {
-        onbg discord --ozone-platform=wayland
+    function runozone {
+        onbg $@ --ozone-platform=wayland
     }
 fi
 

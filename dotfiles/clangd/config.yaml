@@ -1,8 +1,8 @@
-If:
-  PathMatch: .*\.cpp
+ If:
+   PathMatch: .*\.cpp
 
 CompileFlags:
-  Add: [-std=c++2c, -Wall, -Wextra]
+  Add: [-std=c++23, -Wall, -Wextra]
 
 ---
 

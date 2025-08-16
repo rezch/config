@@ -33,7 +33,7 @@ HOME_CONFIGS=(
 )
 
 EXCLUDE=(
-    "*/profiles/0.json"
+    "*/profiles/*"
     "*/dashboard/index.html"
     "*.png"
     "*.bak"

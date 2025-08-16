@@ -1,6 +1,6 @@
 {
     "layer": "top",
-    "position": "top",
+    "position": "bottom",
     "height": 36,
     "spacing": 4,
     "exclusive": true,
@@ -8,16 +8,15 @@
     "fixed-center": true,
 
     "modules-left": [
-        "hyprland/workspaces",
-        "custom/sep",
         "hyprland/window"],
-    // "modules-center": [
-    //     "cava",
-    // ],
+    "modules-center": [
+        "hyprland/workspaces",
+    ],
     "modules-right": [
         "custom/keyboard-layout",
         "pulseaudio",
         "pulseaudio#microphone",
+        "custom/sep",
         "clock",
         "clock#date",
         "custom/sep",
@@ -68,7 +67,7 @@
             "format": {
                 "months": "<span color='#f5e0dc'><b>{}</b></span>",
                 "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
-                "today": "<span color='#1e1e2e' background='#a70c72'><b>{}</b></span>",
+                "today": "<span color='#1e1e2e' background='#aaaaaa'><b>{}</b></span>",
             },
         },
         "actions": { "on-click-right": "mode" },
@@ -103,14 +102,8 @@
         "tooltip-format": "{source_desc} | {source_volume}%",
     },
 
-    // "custom/sep": {
-    //     "format": "|",
-    //     "tooltip": false,
-    // },
-
-    // "custom/power": {
-    //     "tooltip": false,
-    //     "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh &",
-    //     "format": "⏻ ",
-    // },
+    "custom/sep": {
+        "format": "|",
+        "tooltip": false,
+    },
 }

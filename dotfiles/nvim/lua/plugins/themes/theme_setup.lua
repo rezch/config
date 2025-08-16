@@ -56,6 +56,7 @@ local function set_transparency()
         "Normal",
         "NormalNC",
         "SignColumn",
+        "LineNr",
         "NvimTreeIndentMarker",
         "NvimTreeNormal",
         "NvimTreeEndOfBuffer",

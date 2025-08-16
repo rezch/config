@@ -4,12 +4,12 @@ require('keys/plugins')
 map.im('<C-k>', '<escape>')
 
 -- [[ Tabs ]] --
-map.nm('<CA-Right>', '<cmd>bnext<CR>')
-map.vm('<CA-Right>', '<C-C>:bnext<CR>')
-map.im('<CA-Right>', '<C-O>:bnext<CR>')
-map.nm('<CA-Left>', '<cmd>bprevious<CR>')
-map.vm('<CA-Left>', '<C-C>:bprevious<CR>')
-map.im('<CA-Left>', '<C-O>:bprevious<CR>')
+map.nm('<C-Right>', '<cmd>bnext<CR>')
+map.vm('<C-Right>', '<C-C>:bnext<CR>')
+map.im('<C-Right>', '<C-O>:bnext<CR>')
+map.nm('<C-Left>', '<cmd>bprevious<CR>')
+map.vm('<C-Left>', '<C-C>:bprevious<CR>')
+map.im('<C-Left>', '<C-O>:bprevious<CR>')
 
 local close_one_buf = ':bp<bar>sp<bar>bn<bar>bd!<CR>'
 map.nm('<leader>q', close_one_buf)

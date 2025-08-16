@@ -5,11 +5,9 @@ require('keys/main')
 
 require('plugins/themes/theme_setup').setup({
     themes = {
-        'zenbones',
-        'witchesbrew',
-        'tokyonight-moon',
-        'zenburned',
-        'retrobox',
+        'kanagawa-dragon',
+        'vesper',
+        'base16-black-metal',
         'kanagawa',
         'everforest',
     },

@@ -5,13 +5,14 @@ require('keys/main')
 
 require('plugins/themes/theme_setup').setup({
     themes = {
-        'kanagawa-dragon',
+        'zenwritten',
         'vesper',
+        'kanagawa-dragon',
         'base16-black-metal',
         'kanagawa',
         'everforest',
     },
-    transparent = false,
+    transparent = true,
     current_theme = 1,
 })
 

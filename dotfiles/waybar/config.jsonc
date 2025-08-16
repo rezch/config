@@ -8,7 +8,11 @@
     "fixed-center": true,
 
     "modules-left": [
-        "hyprland/window"],
+        "custom/sep",
+        "image#album-art",
+        "custom/sep",
+        "hyprland/window",
+    ],
     "modules-center": [
         "hyprland/workspaces",
     ],
@@ -22,6 +26,12 @@
         "custom/sep",
         "tray",
     ],
+
+    "image#album-art": {
+        "path": "/home/halo/source/pics/image-from-rawpixel-id-15482093-png.png",
+        "size": 50,
+        "interval": 5,
+    },
 
     "custom/keyboard-layout": {
         "return-type": "json",

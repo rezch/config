@@ -239,6 +239,10 @@ function zsudo {
     sudo zsh -c "$functions[$1]" "$@"
 }
 
+function imrot {
+    magick $2 -rotate $1 $2
+}
+
 # fzf theme. folke/tokyonight.nvim
 # removed for transparent bg:
 #  --color=bg+:#2d3f76 \

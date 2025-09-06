@@ -8,6 +8,7 @@ local default_config = {
     current_theme = 0,
     transparent = true,
     mode = "dark",
+    bg_color = nil,
 }
 
 local config = { }
@@ -47,11 +48,19 @@ local function set_hi(...)
 end
 
 local function set_transparency()
-    if not config.transparent then
+    if config.bg_color ~= nil then
+        config.transparent = false
+    end
+
+    if not config.transparent and not config.bg_color then
         return
     end
 
-    local none_bg = { bg="none", ctermbg="none" }
+    local bg_color = config.bg_color ~= nil
+            and config.bg_color
+            or "none"
+
+    local none_bg = { bg=bg_color, ctermbg="none" }
     local hi_params = {
         "Normal",
         "NormalNC",
@@ -60,7 +69,21 @@ local function set_transparency()
         "NvimTreeIndentMarker",
         "NvimTreeNormal",
         "NvimTreeEndOfBuffer",
+        "CursorLine",
+        "CursorLineNr",
+        "StatusLine",
+        "StatusLineNC",
+        "EndOfBuffer",
+        "NormalFloat",
+        "NvimTreeNormalFloat",
+        "TabLineFill",
+        "FloatermBorder",
+        "TelescopeBorder",
     }
+
+    if config.transparent then
+        table.insert(hi_params, "LspInlayHint")
+    end
 
     for _, param in ipairs(hi_params) do
         set_hi(param, none_bg)

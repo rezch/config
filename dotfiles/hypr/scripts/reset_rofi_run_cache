@@ -12,8 +12,8 @@ DRUNCACHE_FILE = HOME/".cache/rofi3.druncache"
 def reset_cache(line):
     cache = line.split(' ')
     if len(cache) < 2:
-        return ''
-    return '0 ' + ' '.join(cache[1:])
+        return None
+    return '0 ' + ' '.join(cache[1:]).replace('\n', '')
 
 
 @click.command()
@@ -24,11 +24,16 @@ def main(cache, max_size):
     if cache == "drun":
         filename = DRUNCACHE_FILE
 
+    lines_printed = 0
     with FileInput(filename, inplace=True, backup='.bak') as f:
-        for i, line in enumerate(f):
-            if max_size != -1 and i >= max_size:
+        for line in f:
+            if lines_printed > max_size:
                 break
-            print(reset_cache(line))
+            new_line = reset_cache(line)
+            if new_line is None:
+                continue
+            print(new_line)
+            lines_printed += 1
 
 
 if __name__ == '__main__':

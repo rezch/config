@@ -30,9 +30,9 @@ HISTCONTROL=ignoreboth
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTFILE=~/.zhistory
-HISTSIZE=1000
-HISTFILESIZE=2000
-SAVEHIST=1000
+HISTSIZE=10000
+HISTFILESIZE=200000
+SAVEHIST=10000
 setopt  APPEND_HISTORY
 setopt  HIST_IGNORE_ALL_DUPS
 setopt  HIST_IGNORE_SPACE
@@ -233,6 +233,8 @@ if [[ -n $XDG_CURRENT_DESKTOP ]]; then
     function runozone {
         onbg $@ --ozone-platform=wayland
     }
+
+    alias fastfetch='fastfetch --logo ~/source/pics/png_icons/logo1.png --logo-height 24'
 fi
 
 function zsudo {
@@ -242,6 +244,8 @@ function zsudo {
 function imrot {
     magick $2 -rotate $1 $2
 }
+
+alias clr='tput reset'
 
 # fzf theme. folke/tokyonight.nvim
 # removed for transparent bg:

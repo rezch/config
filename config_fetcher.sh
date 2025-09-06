@@ -33,6 +33,8 @@ HOME_CONFIGS=(
 )
 
 EXCLUDE=(
+    "*/neko.log"
+    "*/routes_box/*"
     "*/profiles/*"
     "*/dashboard/index.html"
     "*.png"

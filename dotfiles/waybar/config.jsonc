@@ -28,8 +28,8 @@
     ],
 
     "image#album-art": {
-        "path": "/home/halo/source/pics/image-from-rawpixel-id-15482093-png.png",
-        "size": 50,
+        "path": "/home/halo/source/pics/waybar1.jpg",
+        "size": 80,
         "interval": 5,
     },
 
@@ -53,7 +53,7 @@
             "(.{42}).*": "$1..",
         },
         "icon": true,
-        "icon-size": 22,
+        "icon-size": 20,
     },
 
     "tray": {

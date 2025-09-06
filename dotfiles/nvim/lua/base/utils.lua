@@ -35,7 +35,7 @@ function M.len(list)
 end
 
 function M.append(list, value)
-    list[M.Len(list) + 1] = value
+    list[M.len(list) + 1] = value
 end
 
 -- [[ Files ]] --

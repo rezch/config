@@ -22,13 +22,13 @@ Cpp11BracedListStyle: false
 # SpaceAfterOperatorKeyword: true # clang-format 21
 
 # Indents
-ContinuationIndentWidth: 8
+ContinuationIndentWidth: 4
 AccessModifierOffset: -4
 AlignConsecutiveAssignments:
   Enabled: true
   AcrossEmptyLines: false
   AcrossComments: true
-  AlignCompound: true
+  AlignCompound: false
 AlignAfterOpenBracket: AlwaysBreak
 BinPackParameters: OnePerLine
 BinPackArguments: false

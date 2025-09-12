@@ -24,6 +24,9 @@ vim.keymap.set(all_modes, '<leader>a', vim.lsp.buf.code_action)
 vim.keymap.set(all_modes, '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set(all_modes, '<leader>h', ':ClangdSwitchSourceHeader<CR>')
 
+-- [[ Inlay Hints ]] --
+vim.keymap.set(all_modes, '<leader>i', ':InlayHintsToggle<CR>')
+
 -- [[ Telescope ]] --
 local builtin = require('telescope.builtin')
 vim.keymap.set(all_modes, '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })

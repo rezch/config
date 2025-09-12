@@ -230,11 +230,15 @@ function killlast {
 }
 
 if [[ -n $XDG_CURRENT_DESKTOP ]]; then
-    function runozone {
-        onbg $@ --ozone-platform=wayland
-    }
+function runozone {
+    onbg $@ --ozone-platform=wayland
+}
 
-    alias fastfetch='fastfetch --logo ~/source/pics/png_icons/logo1.png --logo-height 24'
+alias fastfetch='fastfetch --logo ~/source/pics/png_icons/logo1.png --logo-height 24'
+
+function neko {
+    onbg /home/halo/source/packages/nekoray/nekobox
+}
 fi
 
 function zsudo {
@@ -244,6 +248,8 @@ function zsudo {
 function imrot {
     magick $2 -rotate $1 $2
 }
+
+alias cmake_sym='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'
 
 alias clr='tput reset'
 

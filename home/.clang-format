@@ -1,60 +1,38 @@
 ---
-BasedOnStyle: LLVM
-IndentWidth: 4
----
 Language: Cpp
+BasedOnStyle: WebKit
+
+# Empty blocks
 SpaceInEmptyBlock: true
 AllowShortBlocksOnASingleLine: Empty
 AllowShortFunctionsOnASingleLine: All
+
+# Namespaces
 ShortNamespaceLines: 0
 FixNamespaceComments: true
+NamespaceIndentation: None
 
 # Empty lines
-CompactNamespaces: false
-EmptyLineAfterAccessModifier: Leave
+EmptyLineBeforeAccessModifier: LogicalBlock
 MaxEmptyLinesToKeep: 2
 
-# Spaces
-SpaceBeforeParens: Custom
-SpaceBeforeParensOptions:
-# AfterOverloadedOperator: true
-Cpp11BracedListStyle: false
-# SpaceAfterOperatorKeyword: true # clang-format 21
-
 # Indents
-ContinuationIndentWidth: 4
-AccessModifierOffset: -4
 AlignConsecutiveAssignments:
   Enabled: true
   AcrossEmptyLines: false
   AcrossComments: true
-  AlignCompound: false
-AlignAfterOpenBracket: AlwaysBreak
-BinPackParameters: OnePerLine
-BinPackArguments: false
-AlignTrailingComments:
-  Kind: Always
-  OverEmptyLines: 0
-AllowShortCaseExpressionOnASingleLine: true
-BreakBeforeBinaryOperators: NonAssignment
-BreakTemplateDeclarations: Leave
-AlignArrayOfStructures: Right
-IndentExternBlock: NoIndent
-IndentPPDirectives: BeforeHash
-PPIndentWidth: 1
-ReflowComments: IndentOnly
-ColumnLimit: 0
+  AlignCompound: true
+BreakConstructorInitializers: BeforeColon
 
 # Braces
-BreakBeforeTernaryOperators: true
 BreakBeforeBraces: Custom
 BraceWrapping:
   AfterFunction: true
   BeforeElse: true
   BeforeLambdaBody: true
-  SplitEmptyNamespace: false
   SplitEmptyFunction: false
   SplitEmptyRecord: false
+
 ---
 Language: C
 
@@ -72,12 +50,20 @@ Cpp11BracedListStyle: false
 
 ContinuationIndentWidth: 8
 AccessModifierOffset: -4
+
+# Aligns
+AlignConsecutiveShortCaseStatements:
+  Enabled: true
+  AcrossEmptyLines: true
+  AcrossComments: true
+  AlignCaseColons: false
 AlignConsecutiveAssignments:
   Enabled: true
   AcrossEmptyLines: false
   AcrossComments: true
   AlignCompound: true
 AlignAfterOpenBracket: AlwaysBreak
+
 BinPackParameters: OnePerLine
 BinPackArguments: false
 AlignTrailingComments:

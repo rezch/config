@@ -253,30 +253,29 @@ alias cmake_sym='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'
 
 alias clr='tput reset'
 
-# fzf theme. folke/tokyonight.nvim
+# fzf theme: ficd0/ashen
 # removed for transparent bg:
-#  --color=bg+:#2d3f76 \
-#  --color=bg:#1e2030 \
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
-  --highlight-line \
-  --info=inline-right \
-  --ansi \
-  --border=none \
-  --color=border:#589ed7 \
-  --color=fg:#c8d3f5 \
-  --color=gutter:#1e2030 \
-  --color=header:#ff966c \
-  --color=hl+:#65bcff \
-  --color=hl:#65bcff \
-  --color=info:#545c7e \
-  --color=marker:#ff007c \
-  --color=pointer:#ff007c \
-  --color=prompt:#65bcff \
-  --color=query:#c8d3f5:regular \
-  --color=scrollbar:#589ed7 \
-  --color=separator:#ff966c \
-  --color=spinner:#ff007c \
-"
+#  --color=bg:#121212
+#  --color=bg+:#323232
+export FZF_DEFAULT_OPTS="   \
+  $FZF_DEFAULT_OPTS         \
+  --highlight-line          \
+  --info=inline-right       \
+  --ansi                    \
+  --border=none             \
+  --color=fg:#a7a7a7        \
+  --color=fg+:#d5d5d5       \
+  --color=hl:#C4693D        \
+  --color=hl+:#E49A44       \
+  --color=info:#a7a7a7      \
+  --color=marker:#C4693D    \
+  --color=prompt:#C4693D    \
+  --color=spinner:#D87C4A   \
+  --color=pointer:#E5A72A   \
+  --color=header:#B14242    \
+  --color=border:#a7a7a7    \
+  --color=query:#d5d5d5     \
+  --color=gutter:#121212"
 
 # shado theme ls colors
 export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.md=38;5;68:*.log=38;5;68:*.c=38;5;169:*.h=38;5;135:*.o=38;5;97:*.y=38;5;99:*.l=38;5;99:*.sh=38;5;104"
@@ -284,6 +283,9 @@ export EXA_COLORS="*.md=38;5;68:*.log=38;5;68:*.c=38;5;169:*.h=38;5;135:*.o=38;5
 
 export PATH=$PATH:/home/rezch/.local/bin/
 export PATH="$HOME/.cabal/bin:$PATH"
+
+export CC=clang #/usr/bin/clang
+export CXX=/usr/bin/clang++
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -294,3 +296,5 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[ -f "/home/halo/.ghcup/env" ] && . "/home/halo/.ghcup/env" # ghcup-env

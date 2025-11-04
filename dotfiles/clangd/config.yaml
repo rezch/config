@@ -2,7 +2,7 @@
    PathMatch: .*\.cpp
 
 CompileFlags:
-  Add: [-std=c++23, -Wall, -Wextra]
+  Add: [-std=c++23, -Wall, -Wextra, -DUwU]
 
 ---
 

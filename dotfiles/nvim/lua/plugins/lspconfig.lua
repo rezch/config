@@ -3,8 +3,9 @@ local lspconfig = require('lspconfig')
 
 vim.lsp.enable('gopls')
 vim.lsp.enable('bashls')
-vim.lsp.enable('pyright')
-vim.lsp.enable('hls')
+
+-- https://github.com/python-lsp/python-lsp-server
+vim.lsp.enable('pylsp')
 
 vim.diagnostic.config({
     virtual_text = true,

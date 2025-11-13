@@ -3,14 +3,14 @@ Language: Cpp
 BasedOnStyle: WebKit
 
 # Empty blocks
-SpaceInEmptyBlock: true
 AllowShortBlocksOnASingleLine: Empty
 AllowShortFunctionsOnASingleLine: All
+SpaceInEmptyBlock: true
 
 # Namespaces
-ShortNamespaceLines: 0
 FixNamespaceComments: true
 NamespaceIndentation: None
+ShortNamespaceLines: 0
 
 # Empty lines
 EmptyLineBeforeAccessModifier: LogicalBlock
@@ -18,10 +18,10 @@ MaxEmptyLinesToKeep: 2
 
 # Indents
 AlignConsecutiveAssignments:
-  Enabled: true
   AcrossEmptyLines: false
   AcrossComments: true
   AlignCompound: true
+  Enabled: true
 BreakConstructorInitializers: BeforeColon
 
 # Braces

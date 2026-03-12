@@ -6,6 +6,7 @@
     "exclusive": true,
     "passthrough": false,
     "fixed-center": true,
+    "output": "DP-3",
 
     "modules-left": [
         "custom/sep",
@@ -19,6 +20,7 @@
     "modules-right": [
         "custom/keyboard-layout",
         "pulseaudio",
+        "custom/headset_power",
         "pulseaudio#microphone",
         "custom/sep",
         "clock",
@@ -83,6 +85,13 @@
         "actions": { "on-click-right": "mode" },
         "min-length": 8,
         "max-length": 28,
+    },
+
+    "custom/headset_power": {
+        "format": "pwr: {}",
+        "return-type": "text",
+        "interval": 5,
+        "exec": "~/.config/hypr/scripts/headset_power.sh"
     },
 
     "pulseaudio": {

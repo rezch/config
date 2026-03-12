@@ -5,11 +5,11 @@ require('keys/main')
 
 require('plugins/themes/theme_setup').setup({
     themes = {
+        'duckbones',
         'vesper',
         'kanagawa',
         'rosebones',
         'seoulbones',
-        'duckbones',
         'neobones',
         'nordbones',
         'base16-black-metal-venom',

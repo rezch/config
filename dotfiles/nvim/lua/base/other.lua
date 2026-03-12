@@ -56,3 +56,8 @@ vim.opt.completeopt = 'menuone,noselect'
 
 -- disable folding
 vim.cmd(" set nofoldenable ")
+
+-- max line size mark
+-- vim.cmd([[
+--     set cc=80
+-- ]])

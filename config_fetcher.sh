@@ -64,8 +64,10 @@ do
     fi
     if [[ $($DIFF "$DOTCONF_RESULT_PATH/$folder" "$DOTCONF_PATH/$folder") ]]; then
         echo "Found diff in $folder"
-        rm -rf "$DOTCONF_RESULT_PATH/$folder"
-        cp -r "$DOTCONF_PATH/$folder" "$DOTCONF_RESULT_PATH/$( dirname $folder )"
+        FOLDER=$DOTCONF_RESULT_PATH/$folder
+        rm -rf "$FOLDER"
+        mkdir -p "$FOLDER"
+        cp -r $DOTCONF_PATH/$folder/* $FOLDER
         echo "Copyied"
         FOLDERS_DIFF=$(( FOLDERS_DIFF + 1 ))
     fi

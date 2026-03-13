@@ -16,7 +16,7 @@ return require('packer').startup(function()
 
     -- LSP & other:
     use({
-        'nvim-treesitter/nvim-treesitter',
+        'nvim-treesitter/nvim-treesitter', branch = 'main',
         config = function()
             require('plugins/treesitter')
         end

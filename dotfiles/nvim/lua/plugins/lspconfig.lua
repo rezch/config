@@ -1,15 +1,23 @@
+vim.lsp.enable('clangd')
 vim.lsp.enable('gopls')
 vim.lsp.enable('bashls')
 
 -- https://github.com/python-lsp/python-lsp-server
 vim.lsp.enable('pylsp')
 
--- vim.lsp.enable('c3')
--- vim.lsp.config('c3', {
---     cmd = { 'c3lsp' },
---     root_markers = { 'project.json', 'manifest.json', '.git' },
---     filetypes = { 'c3', 'c3i' },
--- })
+vim.filetype.add({
+    extension = {
+        c3 = "c3",
+        c3i = "c3",
+        c3t = "c3",
+    },
+})
+vim.lsp.enable('c3')
+vim.lsp.config('c3', {
+    cmd = { 'c3lsp' },
+    root_markers = { 'project.json', 'manifest.json', '.git' },
+    filetypes = { 'c3', 'c3i' },
+})
 
 vim.diagnostic.config({
     virtual_text = true,
@@ -42,14 +50,7 @@ vim.lsp.config('intelephense', {
     }
 })
 
-local function get_cpp_flags()
-    if (filetype == 'cpp') then
-        return { '-std=c++2b' }
-    end
-    return { }
-end
-
-vim.lsp.config('clangd', {
+vim.lsp.config('clang', {
     cmd = {
         'clangd',
         '--background-index',
@@ -68,7 +69,7 @@ vim.lsp.config('clangd', {
     },
     init_options = {
         clangdFileStatus = true,
-        fallbackFlags = get_cpp_flags(),
+        fallbackFlags = '-std=c++2b',
         extra_args = { '--style=file' },
     },
 })

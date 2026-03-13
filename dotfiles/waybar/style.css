@@ -53,6 +53,7 @@ window#waybar.hidden {
 #clock,
 #pulseaudio,
 #custom-headset_power,
+#custom-notifications,
 #custom-logo,
 #custom-power,
 #custom-music-player,
@@ -142,6 +143,10 @@ window#waybar.empty #window {
 }
 
 #custom-headset_power {
+    color: #b4befe;
+}
+
+#custom-notifications {
     color: #b4befe;
 }
 

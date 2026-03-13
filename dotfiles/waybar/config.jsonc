@@ -27,6 +27,8 @@
         "clock#date",
         "custom/sep",
         "tray",
+        "custom/notifications",
+        "custom/sep",
     ],
 
     "image#album-art": {
@@ -119,6 +121,14 @@
         "on-scroll-up": "~/.config/hypr/scripts/volume.sh --mic-inc",
         "on-scroll-down": "~/.config/hypr/scripts/volume.sh --mic-dec",
         "tooltip-format": "{source_desc} | {source_volume}%",
+    },
+
+    "custom/notifications": {
+        "format": "{}",
+        "return-type": "text",
+        "interval": 1,
+        "exec": "~/.config/hypr/scripts/notifications.sh",
+        "on-click": "swaync-client -op",
     },
 
     "custom/sep": {

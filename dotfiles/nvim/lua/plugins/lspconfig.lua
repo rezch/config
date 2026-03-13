@@ -1,11 +1,15 @@
-local lspconfig = require('lspconfig')
-
-
 vim.lsp.enable('gopls')
 vim.lsp.enable('bashls')
 
 -- https://github.com/python-lsp/python-lsp-server
 vim.lsp.enable('pylsp')
+
+-- vim.lsp.enable('c3')
+-- vim.lsp.config('c3', {
+--     cmd = { 'c3lsp' },
+--     root_markers = { 'project.json', 'manifest.json', '.git' },
+--     filetypes = { 'c3', 'c3i' },
+-- })
 
 vim.diagnostic.config({
     virtual_text = true,
@@ -23,7 +27,7 @@ vim.diagnostic.config({
     },
 })
 
-lspconfig.intelephense.setup({
+vim.lsp.config('intelephense', {
     cmd = { 'env', 'HOME=/tmp', 'intelephense', '--stdio' },
     on_attach = function(client, bufnr)
         -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -45,7 +49,7 @@ local function get_cpp_flags()
     return { }
 end
 
-lspconfig.clangd.setup({
+vim.lsp.config('clangd', {
     cmd = {
         'clangd',
         '--background-index',
@@ -69,7 +73,7 @@ lspconfig.clangd.setup({
     },
 })
 
-lspconfig.lua_ls.setup({
+vim.lsp.config('lua_ls', {
   on_init = function(client)
     if client.workspace_folders then
       local path = client.workspace_folders[1].name

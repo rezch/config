@@ -29,7 +29,6 @@ vim.cmd([[
     set lcs+=trail:·
 ]])
 
-
 -- [[ Tabs ]] --
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
@@ -61,3 +60,8 @@ vim.cmd(" set nofoldenable ")
 -- vim.cmd([[
 --     set cc=80
 -- ]])
+
+-- [[ Spacing ]] --
+vim.cmd([[
+    set cinoptions+=:0,g0,(4
+]])
